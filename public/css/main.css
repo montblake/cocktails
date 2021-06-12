@@ -1,0 +1,23 @@
+/* Global */
+
+:root {
+    font-size: 10px;
+}
+
+html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+
+/* STRUCTURE */
+body {
+  background: cornsilk;
+  color: rgb(69, 66, 55);
+  padding: 40px;
+}
