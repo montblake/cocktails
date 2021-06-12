@@ -51,7 +51,8 @@ app.get('/cocktails/new', (req, res) => {
 
 // Create
 app.post('/cocktails', (req, res) => {
-
+    console.log(req.body);
+    res.redirect('/cocktails');
 })
 
 

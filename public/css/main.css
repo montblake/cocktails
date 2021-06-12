@@ -21,3 +21,31 @@ body {
   color: rgb(69, 66, 55);
   padding: 40px;
 }
+
+
+#recipe {
+  background:rgb(69, 66, 55);
+  padding: 20px 10px;
+}
+
+.recipeLine {
+  background: cornsilk;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+/* .recipeLine:last-of-type {
+  margin-bottom: 0;
+} */
+
+.recipeLine > input {
+  height: 20px;
+}
+
+input[type=submit] {  
+  border: none;
+  padding: 5px 10px;
+}

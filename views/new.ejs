@@ -11,5 +11,45 @@
 </head>
 <body>
     <h1>New Cocktail</h1>
+    <form action="/cocktails" method="POST" id="recipe">
+        <fieldset class="recipeLine">
+            <label for="measurement">Measure:</label>
+            <input type="number" step="1" min="0" name="measurement" id="measurement" />
+            <label for="fraction">Fraction:</label>
+            <select name="fraction" id="fraction">
+            <option value="">none</option>
+            <option value="&frac14;">&frac14;</option>
+            <option value="&frac12;">&frac12;</option>
+            <option value="&frac34;">&frac34;</option>
+            </select>
+            <label for="unit">Unit:</label>
+            <select name="unit" id="unit">
+            <option value="oz">oz</option>
+            <option value="ml">ml</option>
+            <option value="tablespoon">tablespoon</option>
+            <option value="teaspoon">teaspoon</option>
+            <option value="barspoon">barspoon</option>
+            <option value="dash">dash</option>
+            </select>
+            <label for="ingredient">Ingredient:</label>
+            <input type="text" name="ingredient" id="ingredient" />
+        </fieldset>
+        <input type="submit" value="submit recipe">
+    </form>
+        
+<script>
+    const $recipe = $('#recipe');
+    const $recipeLine = $('.recipeLine');
+    
+    const $h1 = $('h1');
+
+    $h1.on('click', handleAddLine);
+    
+    function handleAddLine() {
+        console.log('add line');
+        $recipe.append($recipeLine.clone());
+    }
+
+</script>   
 </body>
 </html>
