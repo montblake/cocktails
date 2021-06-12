@@ -10,6 +10,17 @@
     <title>Cocktail Variations</title>
 </head>
 <body>
+    <nav>
+        <a href="/cocktails/new">Add Cocktail</a>
+        <form action="/cocktails?_method=DELETE" method="POST">
+            <input type="submit" value="delete all">
+        </form>
+    </nav>
     <h1>Cocktail Variations</h1>
+    <ul>
+        <% cocktails.forEach(cocktail => { %>
+            <li><a href="/cocktails/<%= cocktail._id %>"><%= cocktail.name %></a></li>
+        <% }); %>
+    </ul>
 </body>
 </html>

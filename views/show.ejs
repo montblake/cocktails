@@ -10,6 +10,11 @@
     <title>Cocktail Variations</title>
 </head>
 <body>
-    <h1>Cocktail Show Page</h1>
+    <h1><%=cocktail.name%></h1>
+    <ul>
+        <% cocktail.recipe.forEach(recipeLine => { %>
+            <li><%= recipeLine.measurement + recipeLine.fraction + " " + recipeLine.unit + " " + recipeLine.ingredient %></li>
+        <% }); %>
+    </ul>
 </body>
 </html>

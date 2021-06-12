@@ -12,42 +12,61 @@
 <body>
     <h1>New Cocktail</h1>
     <form action="/cocktails" method="POST" id="recipe">
-        <fieldset class="recipeLine">
-            <label for="measurement">Measure:</label>
-            <input type="number" step="1" min="0" name="measurement" id="measurement" />
-            <label for="fraction">Fraction:</label>
-            <select name="fraction" id="fraction">
-            <option value="">none</option>
-            <option value="&frac14;">&frac14;</option>
-            <option value="&frac12;">&frac12;</option>
-            <option value="&frac34;">&frac34;</option>
-            </select>
-            <label for="unit">Unit:</label>
-            <select name="unit" id="unit">
-            <option value="oz">oz</option>
-            <option value="ml">ml</option>
-            <option value="tablespoon">tablespoon</option>
-            <option value="teaspoon">teaspoon</option>
-            <option value="barspoon">barspoon</option>
-            <option value="dash">dash</option>
-            </select>
-            <label for="ingredient">Ingredient:</label>
-            <input type="text" name="ingredient" id="ingredient" />
-        </fieldset>
+        <section class="cocktail"> 
+            <label for="name">Name:<input type="text" name="name"></label>
+            
+            <label for="method">Method:
+                <select name="method">
+                    <option value="Stirred">Stirred</option>
+                    <option value="Shaken">Shaken</option>
+                    <option value="Built">Built</option>
+                </select>
+            </label>
+            <fieldset class="recipeLine">
+                <label for="measurement">Measure:
+                    <input type="number" step="1" min="0" name="measurement" />
+                </label>
+                
+                <label for="fraction">Fraction:
+                    <select name="fraction">
+                        <option value="">none</option>
+                        <option value="&frac14;">&frac14;</option>
+                        <option value="&frac12;">&frac12;</option>
+                        <option value="&frac34;">&frac34;</option>
+                    </select>
+                </label>
+               
+                <label for="unit">Unit:
+                    <select name="unit">
+                        <option value="oz">oz</option>
+                        <option value="ml">ml</option>
+                        <option value="tablespoon">tablespoon</option>
+                        <option value="teaspoon">teaspoon</option>
+                        <option value="barspoon">barspoon</option>
+                        <option value="dash">dash</option>
+                    </select>
+                </label>
+                
+                <label for="ingredient">Ingredient:
+                    <input type="text" name="ingredient" />
+                </label>
+            </fieldset>
+        </section>
+        <div class="addLine">add line to recipe</div>
         <input type="submit" value="submit recipe">
     </form>
         
 <script>
-    const $recipe = $('#recipe');
+    const $cocktail = $('.cocktail');
     const $recipeLine = $('.recipeLine');
     
-    const $h1 = $('h1');
+    const $addLine = $('.addLine');
 
-    $h1.on('click', handleAddLine);
+    $addLine.on('click', handleAddLine);
     
     function handleAddLine() {
         console.log('add line');
-        $recipe.append($recipeLine.clone());
+        $cocktail.append($recipeLine.clone());
     }
 
 </script>   

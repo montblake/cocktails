@@ -23,7 +23,7 @@ body {
 }
 
 
-#recipe {
+section {
   background:rgb(69, 66, 55);
   padding: 20px 10px;
 }
@@ -34,18 +34,38 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 /* .recipeLine:last-of-type {
   margin-bottom: 0;
 } */
 
-.recipeLine > input {
-  height: 20px;
-}
+
 
 input[type=submit] {  
   border: none;
   padding: 5px 10px;
+}
+label {
+  color: cornsilk;
+}
+
+select, input {
+  margin: 0 15px 0 5px;
+}
+
+.recipeLine > input {
+  height: 20px;
+  margin-left: 0;
+}
+
+.recipeLine label {
+  color: rgb(69, 66, 55);
+}
+
+.addLine {
+  background: white;
+  display: inline-block;
+  padding: 5px 20px;
 }
