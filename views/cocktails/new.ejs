@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Forking Cocktails</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/cocktails">Back to Cocktails Index</a>
+                </li>
+            </ul>
+        </nav>
+        <h1>Forking Cocktails</h1>
+    </header>
+    <main>
+        <h2>Add a New Cocktail</h2>
+        <form action="/cocktails" method="POST" id="recipe">
+            <label for="name">Cocktail Name</label>
+            <input type="text" name="name" id="cocktail-name">
+            <label for="createdBy">Created by</label>
+                <select name="createdBy" id="cocktail-createdBy">
+                    <option value="">select a creator</option>
+                    <% authors.forEach( author => { %>
+                        <option value="<%= author._id %>"><%= author.name %></option>
+                    <% }); %>
+                </select>
+
+            <label for="method">Method</label>
+                <select name="method" id="cocktail-method">
+                    <option value="Stirred">Stirred</option>
+                    <option value="Shaken">Shaken</option>
+                    <option value="Built">Built</option>
+                </select>
+            
+            <label for="cocktail-glass">Glass</label>
+            <input list="glasses" name="glass" id="cocktail-glass">
+                <datalist id="glasses">
+                    <option value="rocks">rocks</option>
+                    <option value="double rocks">double rocks</option>
+                    <option value="cocktail">cocktail</option>
+                    <option value="martini">martini</option>
+                    <option value="collins">collins</option>
+                    <option value="highball">highball</option>
+                    <option value="nick and nora">nick and nora</option>
+                    <option value="hurricane">hurricane</option>
+                    <option value="tiki">tiki</option>
+                    <option value="tiki mug"></option>
+                    <option value="mule">mule</option>
+                    <option value="shot glass">shot glass</option>
+                </datalist>
+            
+            <label for="garnish">Garnish</label>
+            <input type="text" name="garnish" id="cocktail-garnish"/>
+            
+            
+            <legend for="cocktail-recipe">Ingredients</legend>
+            <section id="cocktail-recipe">
+                <fieldset id="recipeLine">
+                    <div id="rec-measurement">
+                        <label for="rec-measurement">Measurement
+                            <input type="number" step="1" min="0" name="measurement" />
+                        </label>
+                    </div>
+                    <div id="rec-fraction">
+                        <label for="rec-fraction">Fraction
+                            <select name="fraction" >
+                                <option value=""></option>
+                                <option value="&frac14;">&frac14;</option>
+                                <option value="&frac12;">&frac12;</option>
+                                <option value="&frac34;">&frac34;</option>
+                                <option value="&frac14;">&frac18;</option>
+                                <option value="&frac12;">&frac38;</option>
+                                <option value="&frac34;">&frac58;</option>
+                                <option value="&frac34;">&frac78;</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div id="rec-unit">
+                        <label for="rec-unit">Unit
+                            <select name="unit" >
+                                <option value="oz">oz</option>
+                                <option value="dash">dash</option>
+                                <option value="barspoon">barspoon</option>
+                                <option value="tsp">tsp</option>
+                                <option value="tbsp">tbsp</option>
+                                <option value="ml">ml</option> 
+                            </select>
+                        </label>
+                    </div>
+                    <div id="rec-ingredient">
+                        <label for="ingredient">Ingredient
+                            <input type="text" name="ingredient" />
+                        </label>
+                    </div>
+                </fieldset>
+                <div id="addLine">add line to recipe</div>
+                <label for="cocktail-notes">Notes on Preparation</label>
+                <textarea id="cocktail-notes"></textarea>  
+            </section>
+            <input type="submit" value="submit recipe" id="rec-submit">
+        </form> 
+    </main>
+         
+    <script>
+        const $recipe = $('#cocktail-recipe');
+        const $recipeLine = $('#recipeLine');
+        
+        const $addLineBtn = $('#addLine'); 
+
+        $addLineBtn.on('click', handleAddLine);
+        
+        function handleAddLine() {
+            $addLineBtn.before($recipeLine.clone());
+        }
+    </script>   
+
+</body>
+</html>

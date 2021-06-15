@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forking Cocktails</title>
     <link rel="stylesheet" href="/css/normalize.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -11,20 +12,32 @@
 </head>
 <body>
     <header>
-        <h1>Forking Cocktails</h1>
         <nav>
             <ul>
                 <li>
-                    <a href="/authors">Authors</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/cocktails">Cocktails</a>
-                </li>
+                    <a href="/authors/new">Add a new Author</a>
+                </li> 
                 <li>
-                    <a href="/ingredients">Ingredients</a>
+                    <form action="/authors/delete?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete All Authors">
+                    </form>
                 </li>
             </ul>
         </nav>
+        <h1>Forking Cocktails</h1>
     </header>
+    <main>
+        <h2>Authors Index</h2>
+        <ul>
+            <% authors.forEach(function(author){ %>
+                <li>
+                    <a href="authors/<%=author._id%>"><%=author.name%></a>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
 </body>
 </html>

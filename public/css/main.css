@@ -2,6 +2,12 @@
 
 :root {
     font-size: 10px;
+      --tint0: rgb(216, 189, 142);
+      --tint1: rgb(213, 173, 105);
+      --tint2: rgb(176, 142, 84);
+      --tint3: rgb(150, 120, 69);
+      --tint4: rgb(123, 99, 57);
+      --tint5: rgb(99, 80, 46);
 }
 
 html {
@@ -17,55 +23,175 @@ html {
 
 /* STRUCTURE */
 body {
-  background: cornsilk;
-  color: rgb(69, 66, 55);
-  padding: 40px;
+  background-color: rgb(28, 1, 45);
+  color: var(--tint5);
+  height: 100%;
+  width: 100%;
+  padding: 20px;
 }
 
-
-section {
-  background:rgb(69, 66, 55);
-  padding: 20px 10px;
+.ingredients {
+  width: 400px;
+  height: 100px;
+  padding: 20px;
 }
 
-.recipeLine {
-  background: cornsilk;
+.ingredients ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: rgb(130, 171, 205);
+  margin: 0;
+}
+
+h1 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  margin-top: 4rem;
+  font-size: 2.4rem;
+}
+
+input, select {
+  background: rgb(130, 171, 205);
+  border: none;
+  padding: 1rem 3rem;
+  color: rgb(26, 2, 46);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 10px;;
+}
+
+input[type="submit"] {
+  width: 50%;
+}
+
+fieldset {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  height: 40px;
-  margin: 10px 0;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-/* .recipeLine:last-of-type {
-  margin-bottom: 0;
-} */
+fieldset > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 5px;
+}
 
+fieldset select, fieldset input {
+  color:rgb(26, 2, 46);
+  margin: 0;
+  padding: 5px;
+  height: 3.2rem;
+  background: rgb(130, 171, 205);
+}
 
+#rec-measurement {
+  flex-basis: 30px;
+  flex-grow: 1;
+}
 
-input[type=submit] {  
+#rec-measurement input {
+  font-size: 2rem;
+}
+
+#rec-fraction {
+  flex-basis: 30px;
+  flex-grow: 1;
+}
+
+#rec-fraction select {
+  font-size: 1.6rem;
+}
+
+#rec-unit {
+  flex-basis: 30px;
+  flex-grow: 2;
+}
+
+#rec-unit select {
+  font-size: 1.4rem;
+}
+
+#rec-ingredient {
+  flex-basis: 100px;
+  flex-grow: 6;
+}
+
+fieldset > label {
+  font-size: 1.4rem;
+}
+
+label {
+  color: white;
+  font-size: 1.4rem;
+}
+
+a {
+  background:white;
+  color: rgb(130, 171, 205);
+  text-decoration: none;
+  padding: 10px;
+}
+
+#cocktail-notes {
+  width: 100%;
+  min-height: 80px;
   border: none;
   padding: 5px 10px;
-}
-label {
-  color: cornsilk;
-}
-
-select, input {
-  margin: 0 15px 0 5px;
+  margin-bottom: 5px;
+  background: rgb(130, 171, 205);
 }
 
-.recipeLine > input {
-  height: 20px;
-  margin-left: 0;
-}
-
-.recipeLine label {
-  color: rgb(69, 66, 55);
-}
-
-.addLine {
+#rec-submit {
+  margin: 20px auto;
+  width: 60%;
+  height: 40px;
   background: white;
-  display: inline-block;
-  padding: 5px 20px;
+  color: rgb(26, 2, 46);
+  text-transform: uppercase;
+  font-size: 1.4rem; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+#addLine {
+  margin: 20px auto 20px auto;
+  width: 60%;
+  height: 40px;
+  background: white;
+  color: rgb(26, 2, 46);
+  text-transform: uppercase;
+  font-size: 1.4rem; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  text-decoration: none;
+  margin-bottom: 25px;
+  font-size: 1.6rem;
 }

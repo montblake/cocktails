@@ -7,11 +7,18 @@
     <link rel="stylesheet" href="/css/normalize.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>Cocktail Variations</title>
+    <title>Forking Cocktails</title>
 </head>
 <body>
+    <nav>
+        <form action="/cocktails/<%= cocktail._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="delete" />
+        </form>
+    </nav>
     <h1><%=cocktail.name%></h1>
-    <ul>
+    <h2>Created by <%= cocktail.createdBy.name %></h2>
+    <h3><%= cocktail.method %></h3>
+    <ul class="ingredients">
         <% cocktail.recipe.forEach(recipeLine => { %>
             <li><%= recipeLine.measurement + recipeLine.fraction + " " + recipeLine.unit + " " + recipeLine.ingredient %></li>
         <% }); %>

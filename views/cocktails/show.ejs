@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Forking Cocktails</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/cocktails">Cocktail Index</a>
+                </li>
+            </ul>
+        </nav>
+        <h1>Forking Cocktails</h1>
+    </header>
+    <main>
+        <h2>Cocktail Attributes:</h2>
+        <ul>
+            <li>Name: <%= cocktail.name %></li>
+            <li>Created by: </%= cocktail.createdBy.name %></li>
+            <li>About: <%= cocktail.blurb %></li>
+            <li>Method: <%= cocktail.method %></li>
+            <li>Glass: <%= cocktail.glass %></li>
+            <li>Garnish: <%= cocktail.garnish %></li>
+        </ul>
+            <h3>Ingredients:</h3>
+            <ul class="ingredients">
+                <% cocktail.recipe.forEach(recipeLine => { %>
+                    <li><%= recipeLine.measurement + recipeLine.fraction + " " + recipeLine.unit + " " + recipeLine.ingredient %></li>
+                <% }); %>
+            </ul>
+            <h3>Notes:</h3>
+            <p><%= cocktail.notes %></p>
+        <ul>
+            <li>Date Created: <%= new Date(cocktail.createdAt).toLocaleDateString() %> </li>
+            <li>Last Update: <%= new Date(cocktail.updatedAt).toLocaleDateString() %></li>
+        </ul>
+        <nav class="actions-nav">
+            <a href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
+            <form action="/cocktails/<%=cocktail._id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Cocktail" />
+            </form>
+        </nav>
+    </main>   
+</body>
+</html>

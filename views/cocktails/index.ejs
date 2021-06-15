@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Forking Cocktails</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/cocktails/new">Add Cocktail</a>
+            </li>
+            <li>
+                <form action="/cocktails?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete All Cocktails" />
+                </form>
+            </li>  
+        </nav>
+        <h1>Forking Cocktails</h1>
+    </header>
+    <main>
+        <h2>Great Big Index of Cocktails</h2>
+        <ul>
+            <% cocktails.forEach(cocktail => { %>
+                <li><a href="/cocktails/<%= cocktail._id %>"><%= cocktail.name %></a></li>
+            <% }); %>
+        </ul>
+
+    </main> 
+
+</body>
+</html>
