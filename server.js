@@ -4,8 +4,6 @@ const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-const morgan = require('morgan');
-const logger = require('morgan');
 
 
 // Database Configuration
@@ -27,7 +25,7 @@ db.on('disconnected', () => console.log('Mongo disconnected'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
-app.use(logger('dev'));
+
 
 // Controllers
 const authorsController = require('./controllers/authors');
