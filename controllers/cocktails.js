@@ -65,6 +65,7 @@ router.post('/', (req, res) => {
 
 // Edit
 router.get('/:id/edit', (req, res) => {
+    
     Cocktail.findById(req.params.id, (error, cocktail) => {
         res.render('cocktails/edit.ejs', { cocktail });
     });
