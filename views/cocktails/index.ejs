@@ -10,31 +10,36 @@
     <title>Forking Cocktails</title>
 </head>
 <body>
+
     <header>
-        <nav>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/cocktails/new">Add Cocktail</a>
-            </li>
-            <li>
-                <form action="/cocktails?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete All Cocktails" />
-                </form>
-            </li>  
+        <nav class="topNav">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/cocktails/new">Add New Cocktail</a>
+                </li> 
+                <li>
+                    <form action="/cocktails?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete All Cocktails" />
+                    </form>
+                </li>
+            </ul>
         </nav>
-        <h1>Forking Cocktails</h1>
+        <h2 class="interior">Forking Cocktails</h2>
     </header>
+
     <main>
-        <h2>Great Big Index of Cocktails</h2>
-        <ul>
+        <h3>Cocktail Index</h3>
+        <ul class="index">
             <% cocktails.forEach(cocktail => { %>
-                <li><a href="/cocktails/<%= cocktail._id %>"><%= cocktail.name %></a></li>
+                <li>
+                    <a href="/cocktails/<%= cocktail._id %>"><%= cocktail.name %></a>
+                </li>
             <% }); %>
         </ul>
-
     </main> 
-
+    
 </body>
 </html>

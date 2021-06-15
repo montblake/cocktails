@@ -13,7 +13,7 @@
 
 body {
   padding: 40px;
-  color: white;
+  color: whitesmoke;
   font-family: 'Mulish', sans-serif;
 }
 
@@ -65,14 +65,18 @@ a {
 
 #authors {
   color: orange;
-  font-size: 2.4rem;
-  font-weight: 800;
+  font-size: 3.2rem;
 }
 
 #cocktails {
   color: purple;
+  font-size: 3.2rem;
+}
+
+.plus {
+  color: black;
   font-size: 2.4rem;
-  font-weight: 800;
+  margin-left: .5rem;
 }
 
 main p {
@@ -113,19 +117,26 @@ main > form > label {
 }
 
 main > form > input {
-  height: 2.4rem;
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 20px 30px;
+  padding: 10px 20px;
+}
+
+main > form > select {
+  color: black;
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  margin-bottom: 1.6rem;
+
 }
 
 main > form > textarea {
   min-height: 4.8rem;
-  margin-bottom: 3.2rem;
+  margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 20px 30px;
+  padding: 10px 20px;
 }
 
 main > form > input[type=submit] {
@@ -138,7 +149,7 @@ main > form > input[type=submit] {
 }
 
 main > form > p {
-  background: whitesmoke;
+  background: white;
   color: black;
   margin: 0 0 15px 0;
 }
@@ -155,7 +166,7 @@ main > form > h4 {
 
 .index li {
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   text-transform: capitalize;
 }
 
@@ -167,4 +178,101 @@ main > form > h4 {
   padding: 1rem;
   text-align: center;
   margin-bottom: 10px;
+}
+
+#cocktail-details {
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1.6rem;
+
+}
+
+#cocktail-details input {
+  color: black;
+  padding: 10px 20px;
+  font-size: 1.4rem;
+}
+
+#cocktail-details label {
+  font-size: 1.4rem;
+}
+
+#cocktail-details section {
+  display: flex;
+  flex-direction: column;
+}
+
+.narrow {
+  margin-right: 1.6rem;
+}
+
+#cocktail-notes {
+  min-height: 12.0rem;
+}
+
+
+#cocktail-recipe label {
+  font-size: 1.4rem;
+  color: white;
+}
+
+#recipeLine {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#full-ingredient {
+   display: flex;
+   flex-direction: row;
+   margin-bottom: 10px;
+ }
+
+#full-ingredient > div {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  flex-basis: 100px;
+}
+
+#full-ingredient > div > select {
+  border: none;
+  font-size: 1.4rem;
+  height: 2.4rem;
+  margin-right: 10px;
+} 
+
+#full-ingredient > div > input {
+  border: none;
+  font-size: 1.4rem;
+  height: 2.4rem;
+}
+
+#recipe-ingredient {
+  flex-grow: 3;
+}
+
+#recipe-actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#recipe-actions > div {
+  background: orange;
+  padding: 5px 10px;
+  color: black;
+  font-size: 1.4rem;
+}
+
+#addLine {
+  margin-right: 10px;
+  background: orange;
+}
+
+#loseLine {
+  background: orange;
 }
