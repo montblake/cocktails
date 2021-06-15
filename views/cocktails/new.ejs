@@ -29,12 +29,12 @@
             <label for="name">Cocktail Name</label>
             <input type="text" name="name" id="cocktail-name">
             <label for="createdBy">Created by</label>
-                <select name="createdBy" id="cocktail-createdBy">
-                    <option value="">select a creator</option>
-                    <% authors.forEach( author => { %>
-                        <option value="<%= author._id %>"><%= author.name %></option>
-                    <% }); %>
-                </select>
+            <select name="createdBy" id="cocktail-createdBy">
+                <option value="">select a creator</option>
+                <% authors.forEach( author => { %>
+                    <option value="<%= author._id %>"><%= author.name %></option>
+                <% }); %>
+            </select>
 
             <label for="method">Method</label>
                 <select name="method" id="cocktail-method">

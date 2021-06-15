@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Cocktail = require('../models/cocktail');
 const Author = require('../models/author');
-const Ingredient = require('../models/ingredient');
 
 // ================================
 // ROUTES
@@ -12,7 +11,6 @@ const Ingredient = require('../models/ingredient');
 router.get('/', (req, res) => {
     
     Cocktail.find({}, (error, cocktails) => {
-        console.log(cocktails);
         res.render('cocktails/index.ejs', { cocktails });
     }); 
 });
@@ -33,6 +31,24 @@ router.delete('/:id', (req, res) => {
 
 // Update
 router.put('/:id', (req, res) => {
+    console.log(req.body);
+    let num_lines = req.body.measurement.length;
+    let recipe = [];
+    for (let i = 0; i < num_lines; i++){
+        let recipeLine = {};
+        if (req.body.measurement[i] === '0'){
+            recipeLine.measurement = '';
+        } else {
+            recipeLine.measurement = req.body.measurement[i];
+        }
+         
+        recipeLine.fraction = req.body.fraction[i];
+        recipeLine.unit = req.body.unit[i];
+        recipeLine.ingredient = req.body.ingredient[i];
+        recipe.push(recipeLine);
+    }
+    req.body.recipe = recipe;
+    console.log(req.body);
     Cocktail.findByIdAndUpdate(req.params.id, req.body, (error, updatedCocktail) => {
         res.redirect('/cocktails');
     });
@@ -40,7 +56,6 @@ router.put('/:id', (req, res) => {
 
 // Create
 router.post('/', (req, res) => {
-    console.log(req.body);
     let num_lines = req.body.measurement.length;
     let recipe = [];
     for (let i = 0; i < num_lines; i++){

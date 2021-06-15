@@ -32,8 +32,7 @@ const authorsController = require('./controllers/authors');
 app.use('/authors', authorsController);
 const cocktailsController = require('./controllers/cocktails');
 app.use('/cocktails', cocktailsController);
-const ingredientsController = require('./controllers/ingredients');
-app.use('/ingredients', ingredientsController);
+
 
 // Routes
 app.get('/', (req, res) => {
