@@ -117,6 +117,7 @@ main > form > input {
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
+  padding: 20px 30px;
 }
 
 main > form > textarea {
@@ -124,6 +125,7 @@ main > form > textarea {
   margin-bottom: 3.2rem;
   color: black;
   font-size: 1.4rem;
+  padding: 20px 30px;
 }
 
 main > form > input[type=submit] {
@@ -132,6 +134,7 @@ main > form > input[type=submit] {
   height: 3.6rem;
   width: 160px;
   border: none;
+  padding: 0;
 }
 
 main > form > p {
@@ -143,6 +146,11 @@ main > form > p {
 main > form > h4 {
   font-size: 1.4rem;
   margin: 0 0 5px 0;
+}
+
+.index {
+  margin-top: 0;
+  margin-bottom: 3.2rem;
 }
 
 .index li {

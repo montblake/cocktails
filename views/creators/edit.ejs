@@ -13,20 +13,20 @@
 
 <body>
     <header>
-        <h1>Edit <%= creator.name %>'s Info</h1>
         <nav>
             <ul>
                 <li>
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/creators">Creators Index</a>
+                    <a href="/creators">Creator Index</a>
                 </li>
             </ul>
         </nav>
+        <h2>Forking Cocktails</h2>
     </header>
     <main>
-        <h2>Author Attributes:</h2>
+        <h3>Edit Creator</h3>
         <form action="/creators/<%= creator._id %>?_method=PUT" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="<%= creator.name %>"/>
