@@ -11,25 +11,26 @@
 </head>
 <body>
     <header>
-        <h1>Add an Author</h1>
-        <nav>
+        <nav class="topNav">
             <ul>
                 <li>
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/authors">Authors Index</a>
+                    <a href="/creators">Creator Index</a>
                 </li>
             </ul>
         </nav>
+        <h2 class="interior">Forking Cocktails</h2>
     </header>
     <main>
-        <form action="/authors" method="POST">
-            <label for="name">Name:</label>
+        <h3>Add Creator</h3>
+        <form action="/creators" method="POST">
+            <label for="name">Name</label>
             <input type="text" name="name" id="name" />
-            <label for="about">About:</label>
+            <label for="about">About</label>
             <textarea name="about" id="about"></textarea>
-            <input type="submit" value="Add Author" />
+            <input type="submit" value="Add Creator" />
         </form>
     </main>
 </body>

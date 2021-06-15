@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400&display=swap');
 
 :root {
   font-size: 10px;
@@ -12,11 +13,16 @@
 
 body {
   padding: 40px;
-  color: black;
+  color: white;
+  font-family: 'Mulish', sans-serif;
 }
 
 header {
   margin-bottom: 20px;
+}
+
+h1,h2,h3 {
+  color: black;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,8 +36,18 @@ h1 {
 
 h2 {
   font-size: 4.8rem;
-  margin-bottom: -10px;}
+  margin-bottom: -10px;
+}
 
+.interior {
+  font-size: 3.6rem;
+  margin-bottom: -10px;
+}
+
+h3 {
+  margin-top: -3.2rem;
+  font-size: 8.4rem;
+}
 
 ul {
   list-style: none;
@@ -60,7 +76,7 @@ a {
 }
 
 main p {
-  background: lightgrey;
+  background: #666;
   border: 1px solid black;
   padding: 20px 30px;
 }
@@ -68,4 +84,79 @@ main p {
 p {
   font-size: 1.4rem;
 
+}
+
+.topNav li {
+  display: block;
+  font-size: 1.6rem;
+
+}
+
+.topNav input {
+  border: none;
+  background: none;
+  padding: 0;
+  color: orange;
+}
+
+main > form {
+  background: #666;
+  border: 1px solid black;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+main > form > label {
+  font-size: 1.4rem;
+}
+
+main > form > input {
+  height: 2.4rem;
+  margin-bottom: 1.6rem;
+  color: black;
+  font-size: 1.4rem;
+}
+
+main > form > textarea {
+  min-height: 4.8rem;
+  margin-bottom: 3.2rem;
+  color: black;
+  font-size: 1.4rem;
+}
+
+main > form > input[type=submit] {
+  background: orange;
+  font-size: 1.6rem;
+  height: 3.6rem;
+  width: 160px;
+  border: none;
+}
+
+main > form > p {
+  background: whitesmoke;
+  color: black;
+  margin: 0 0 15px 0;
+}
+
+main > form > h4 {
+  font-size: 1.4rem;
+  margin: 0 0 5px 0;
+}
+
+.index li {
+  display: block;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+}
+
+.actions {
+  background: orange;
+  font-size: 1.6rem;
+  width: 160px;
+  color: black;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 10px;
 }

@@ -12,29 +12,29 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="topNav">
             <ul>
                 <li>
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/authors/new">Add a new Author</a>
+                    <a href="/creators/new">Add New Creator</a>
                 </li> 
                 <li>
-                    <form action="/authors/delete?_method=DELETE" method="POST">
-                        <input type="submit" value="Delete All Authors">
+                    <form action="/creators/delete?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete All Creators">
                     </form>
                 </li>
             </ul>
         </nav>
-        <h1>Forking Cocktails</h1>
+        <h2 class="interior">Forking Cocktails</h2>
     </header>
     <main>
-        <h2>Authors Index</h2>
-        <ul>
-            <% authors.forEach(function(author){ %>
+        <h3>Creator Index</h3>
+        <ul class="index">
+            <% creators.forEach(function(creator){ %>
                 <li>
-                    <a href="authors/<%=author._id%>"><%=author.name%></a>
+                    <a href="creators/<%=creator._id%>"><%=creator.name%></a>
                 </li>
             <% }); %>
         </ul>

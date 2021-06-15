@@ -28,8 +28,8 @@ app.use(methodOverride('_method'));
 
 
 // Controllers
-const authorsController = require('./controllers/authors');
-app.use('/authors', authorsController);
+const creatorsController = require('./controllers/creators');
+app.use('/creators', creatorsController);
 const cocktailsController = require('./controllers/cocktails');
 app.use('/cocktails', cocktailsController);
 

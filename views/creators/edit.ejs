@@ -13,31 +13,28 @@
 
 <body>
     <header>
-        
+        <h1>Edit <%= creator.name %>'s Info</h1>
         <nav>
             <ul>
                 <li>
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/authors">Author Index</a>
+                    <a href="/creators">Creators Index</a>
                 </li>
             </ul>
         </nav>
-        <h1>Forking Cocktails</h1>
     </header>
     <main>
         <h2>Author Attributes:</h2>
-        <ul>
-            <li>Name: <%= author.name %></li>
-            <li>About: <%= author.about %></li>
-            <li>Date Created: <%= new Date(author.createdAt).toLocaleDateString() %> </li>
-            <li>Last Update: <%= new Date(author.updatedAt).toLocaleDateString() %></li>
-        </ul>
-        <a href="/authors/<%=author._id%>/edit">Edit Author</a>
-        <form action="/authors/<%=author._id%>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete Author" />
+        <form action="/creators/<%= creator._id %>?_method=PUT" method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="<%= creator.name %>"/>
+            <label for="about">About</label>
+            <textarea name="about" id="about" ><%= creator.about %></textarea>
+            <input type="submit" value="Update Creator" />
         </form>
+
     </main>
 </body>
 

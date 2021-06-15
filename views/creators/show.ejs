@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Forking Cocktails</title>
+</head>
+
+<body>
+    <header>
+        
+        <nav class="topNav">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/creators">Creator Index</a>
+                </li>
+            </ul>
+        </nav>
+        <h2>Forking Cocktails</h2>
+    </header>
+    <main>
+        <h3>Creator Page</h3>
+        <form action="/creators/<%=creator._id%>?_method=DELETE" method="POST">
+            <h4>Name</h4>
+            <p><%= creator.name %></p>
+            <h4>About</h4>
+            <p><%= creator.about %></p>
+            <h4>Date Joined</h4>
+            <p><%= new Date(creator.createdAt).toLocaleDateString() %></p>
+            <h4>Cocktails</h4>
+            <ul class="index">
+                <li>
+                    <a href="#">Edible Art</a>
+                </li>
+                <li>
+                    <a href="#">twee chambray</a>
+                </li>
+                <li>
+                    <a href="#">Schlitz Irony</a>
+                </li>
+                <li>
+                    <a href="#">vegan mixtape</a>
+                </li>
+                <li>
+                    <a href="#">Locavore helvetica</a>
+                </li>
+                <li>
+                    <a href="#">fingerstache</a>
+                </li>
+                <li>
+                    <a href="#">Portland Fanny Pack</a>
+                </li>
+                <li>
+                    <a href="#">gastropub narwhal</a>
+                </li>
+            </ul>
+
+            <a class="actions" href="/creators/<%=creator._id%>/edit">Edit Creator</a>
+            <input type="submit" value="Delete Creator" />
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Cocktail = require('../models/cocktail');
-const Author = require('../models/author');
+const Creator = require('../models/creator');
 
 // ================================
 // ROUTES
@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 
 // New
 router.get('/new', (req, res) => {
-    Author.find({}, (error, authors) => {
-        res.render('cocktails/new.ejs', { authors });
+    Creator.find({}, (error, creators) => {
+        res.render('cocktails/new.ejs', { creators });
     });
 });
 
