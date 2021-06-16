@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const authorSchema = new Schema({
     name: {type: String, required: true },
     about: String,
+    cocktails: [ { type: Schema.Types.ObjectId }],
 }, { timestamps: true });
 
 

@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Creator = require('../models/creator');
+const Cocktail = require('../models/cocktail');
 
 
 // ===============================
@@ -56,10 +57,16 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // Show
-router.get('/:id', (req, res) => {
-    Creator.findById(req.params.id, (error, foundCreator) => {
-        res.render('creators/show.ejs', { creator: foundCreator });
-    });
+router.get('/:id', async (req, res) => {
+    try {
+        const cocktails = await Cocktail.find({ createdBy: req.params.id });
+        console.log(cocktails);
+        const creator = Creator.findById(req.params.id);
+        res.render('creators/show.ejs', {creator, cocktails})
+
+    } catch(error) {
+        console.log(error);
+    }
 });
 
 

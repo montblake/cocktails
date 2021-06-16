@@ -52,15 +52,15 @@
             <p><%= cocktail.notes %></p>
             
             <% if (cocktail.parent) { %>
-                <h4>Cocktail from which <%=cocktail.createdBy.name%>'s <%=cocktail.name%> was Forked</h4>
+                <h4>Forked FROM</h4>
                 <p><a href="<%=cocktail.parent._id%>"><%=cocktail.parent.name%></a></p>
             <% } %>
             
             <% if (cocktail.children.length) { %>
-                <h4>Cocktails Forked from <%=cocktail.createdBy.name%>'s <%=cocktail.name%></h4>
+                <h4>Forked BY</h4>
                 <ul>
                     <% cocktail.children.forEach(child => { %>
-                        <li><%=child.name%></li>
+                        <li><a href="/cocktails/<%= child._id %>"><%=child.name%></a></li>
                     <% }) %>
                 </ul>
             <% } %>
