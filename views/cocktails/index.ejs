@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <nav class="topNav">
+        <nav class="topNav cocktails">
             <ul>
                 <li>
                     <a href="/">Home</a>
@@ -32,7 +32,7 @@
 
     <main>
         <h3>Cocktail Index</h3>
-        <ul class="index">
+        <ul class="index cocktails">
             <% cocktails.forEach(cocktail => { %>
                 <li>
                     <a href="/cocktails/<%= cocktail._id %>"><%= cocktail.name %></a>

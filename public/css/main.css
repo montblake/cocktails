@@ -262,17 +262,32 @@ main > form > h4 {
 }
 
 #recipe-actions > div {
-  background: orange;
+  background: purple;
   padding: 5px 10px;
-  color: black;
+  color: whitesmoke;
   font-size: 1.4rem;
 }
 
 #addLine {
   margin-right: 10px;
-  background: orange;
+  background: purple;
+
 }
 
 #loseLine {
-  background: orange;
+  background: purple;
+
+}
+
+.cocktails a {
+  color: purple;
+}
+
+.cocktails input {
+  color: purple;
+}
+
+#recipe-submit {
+  background: purple;
+  color: whitesmoke;
 }
