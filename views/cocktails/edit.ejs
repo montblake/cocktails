@@ -11,110 +11,235 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="topNav cocktails">
             <ul>
                 <li>
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/cocktails">Back to Cocktails Index</a>
+                    <a href="/cocktails">Cocktail Index</a>
                 </li>
             </ul>
         </nav>
-        <h1>Forking Cocktails</h1>
+        <h2 class="interior">Forking Cocktails</h2>
     </header>
     <main>
-        <h2>Edit Cocktail</h2>
-        <form action="/cocktails/<%=cocktail._id%>?_method=PUT" method="POST" id="recipe">
-            <label for="name">Cocktail Name</label>
-            <input type="text" name="name" id="cocktail-name"  value="<%=cocktail.name%>">
+        <h3>Edit Cocktail</h3>
+        <form action="/cocktails/<%= cocktail._id %>?_method=PUT" method="POST">
+
+            <label for="name">Name</label>
+            <input type="text" name="name" id="cocktail-name" value="<%=cocktail.name%>">
             
-            <label for="method">Method</label>
-                <select name="method" id="cocktail-method" value="<%=cocktail.method%>">
-                    <option value="Stirred">Stirred</option>
-                    <option value="Shaken">Shaken</option>
-                    <option value="Built">Built</option>
-                </select>
-            
-            <label for="cocktail-glass">Glass</label>
-            <input list="glasses" name="glass" id="cocktail-glass" value="<%=cocktail.glass%>">
-                <datalist id="glasses">
-                    <option value="rocks">rocks</option>
-                    <option value="double rocks">double rocks</option>
-                    <option value="cocktail">cocktail</option>
-                    <option value="martini">martini</option>
-                    <option value="collins">collins</option>
-                    <option value="highball">highball</option>
-                    <option value="nick and nora">nick and nora</option>
-                    <option value="hurricane">hurricane</option>
-                    <option value="tiki">tiki</option>
-                    <option value="tiki mug"></option>
-                    <option value="mule">mule</option>
-                    <option value="shot glass">shot glass</option>
-                </datalist>
-            
-            <label for="garnish">Garnish</label>
-            <input type="text" name="garnish" id="cocktail-garnish" value="<%=cocktail.garnish%>"/>
-            
-            <label for="cocktail-recipe">Ingredients</label>
-            <section id="cocktail-recipe" value="<%= cocktail.recipe %>">
-                <fieldset id="recipeLine">
-                    <div id="rec-measurement">
-                        <label for="rec-measurement">Measurement
-                            <input type="number" step="1" min="0" name="measurement" />
-                        </label>
+            <label for="createdBy">Created by</label>
+            <select name="createdBy" id="createdBy">
+                <% creators.forEach( creator => { %>
+                    <option value="<%=creator._id%>"><%=creator.name%></option>
+                <% }); %>
+            </select>
+
+            <label for="cocktail-description">Description</label>
+            <textarea type="text" name="description" id="cocktail-description"><%=cocktail.description%></textarea>
+
+            <section id="cocktail-recipe">
+                <header>
+                    <label for="recipeLine">Ingredients</label>
+                    <nav id="recipe-actions">
+                        <div id="addLine">add ingredient</div>
+                        <div id="loseLine">remove ingredient</div>
+                    </nav>
+                </header>
+                <% for(let i = 0; i < cocktail.recipe.length; i++){ %>
+
+                <fieldset id="recipeLine" name="recipeLine">
+                    <div id="recipe-number">
+                        <label for="number">Number</label>
+                        <select name="number" id="number">
+                            <% console.log(cocktail.recipe[i].number) %>
+                            <% if (cocktail.recipe[i].number === ""){ %>
+                                <option value="" selected >0</option>
+                            <% } else { %>
+                                <option value="" >0</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "1"){ %>
+                                <option value="1" selected >1</option>
+                            <% } else { %>
+                                <option value="1" >1</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "2"){ %>
+                                <option value="2" selected >2</option>
+                            <% } else { %>
+                                <option value="2" >2</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "3"){ %>
+                                <option value="3" selected >3</option>
+                            <% } else { %>
+                                <option value="3" >3</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "4"){ %>
+                                <option value="4" selected >4</option>
+                            <% } else { %>
+                                <option value="4" >4</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "5"){ %>
+                                <option value="5" selected >5</option>
+                            <% } else { %>
+                                <option value="5" >5</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "6"){ %>
+                                <option value="6" selected >6</option>
+                            <% } else { %>
+                                <option value="6" >6</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "7"){ %>
+                                <option value="7" selected >7</option>
+                            <% } else { %>
+                                <option value="7" >7</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "8"){ %>
+                                <option value="8" selected >8</option>
+                            <% } else { %>
+                                <option value="8" >8</option>
+                            <% } %>
+                            <% if (cocktail.recipe[i].number === "9"){ %>
+                                <option value="9" selected >9</option>
+                            <% } else { %>
+                                <option value="9" >9</option>
+                            <% } %>
+                            
+                        </select>
                     </div>
-                    <div id="rec-fraction">
-                        <label for="rec-fraction">Fraction
-                            <select name="fraction" >
-                                <option value=""></option>
-                                <option value="&frac14;">&frac14;</option>
-                                <option value="&frac12;">&frac12;</option>
-                                <option value="&frac34;">&frac34;</option>
-                                <option value="&frac14;">&frac18;</option>
-                                <option value="&frac12;">&frac38;</option>
-                                <option value="&frac34;">&frac58;</option>
-                                <option value="&frac34;">&frac78;</option>
-                            </select>
-                        </label>
+                    <div id="recipe-fraction">
+                        <label for="fraction">Fraction</label>
+                        <select name="fraction" id="fraction">
+                            
+                                <option value="" >0</option>
+                            
+                                <option value="1/4" >&frac14;</option>
+                            
+                                <option value="1/2" >&frac12;</option>
+                            <% if (cocktail.recipe[i].fraction === "3/4"){ %>
+                                <option value="3/4" selected >&frac34;</option>
+                            <% } else { %>
+                                <option value="3/4" >&frac34;</option>
+                            <% } %>
+                                <option value="3/4" >&frac34;</option>
+                           
+                                <option value="1/8" >&frac18;</option>
+                           
+                                <option value="3/8" >&frac38;</option>
+                           
+                                <option value="5/8" >&frac58;</option>
+                           
+                                <option value="7/8" >&frac78;</option>
+                            
+                        </select>
                     </div>
-                    <div id="rec-unit">
-                        <label for="rec-unit">Unit
-                            <select name="unit" >
-                                <option value="oz">oz</option>
-                                <option value="dash">dash</option>
-                                <option value="barspoon">barspoon</option>
-                                <option value="tsp">tsp</option>
-                                <option value="tbsp">tbsp</option>
-                                <option value="ml">ml</option> 
-                            </select>
-                        </label>
+                    <div id="recipe-unit">
+                        <label for="unit">Unit</label>
+                        <select name="unit" id="unit" value="<%=cocktail.recipe[i].unit%>">
+                            <% if (cocktail.recipe[i].unit === "oz"){ %>
+                                <option value="oz" selected >oz</option>
+                            <% } else { %>
+                                <option value="oz" >oz</option>
+                            <% } %> 
+                            <% if (cocktail.recipe[i].unit === "dash"){ %>
+                                <option value="dash" selected >dash</option>
+                            <% } else { %>
+                                <option value="dash" >dash</option>
+                            <% } %> 
+                            <% if (cocktail.recipe[i].unit === "barspoon"){ %>
+                                <option value="barspoon" selected >barspoon</option>
+                            <% } else { %>
+                                <option value="barspoon" >barspoon</option>
+                            <% } %> 
+                            <% if (cocktail.recipe[i].unit === "tsp"){ %>
+                                <option value="tsp" selected >tsp</option>
+                            <% } else { %>
+                                <option value="tsp" >tsp</option>
+                            <% } %> 
+                            <% if (cocktail.recipe[i].unit === "tbsp"){ %>
+                                <option value="tbsp" selected >tbsp</option>
+                            <% } else { %>
+                                <option value="tbsp" >tbsp</option>
+                            <% } %> 
+                            <% if (cocktail.recipe[i].unit === "ml"){ %>
+                                <option value="ml" selected >ml</option>
+                            <% } else { %>
+                                <option value="ml" >ml</option>
+                            <% } %> 
+                        </select>
                     </div>
-                    <div id="rec-ingredient">
-                        <label for="ingredient">Ingredient
-                            <input type="text" name="ingredient" />
-                        </label>
+                    <div id="recipe-ingredient">
+                        <label for="ingredient">Ingredient</label>
+                        <input type="text" name="ingredient" id="ingredient" value="<%=cocktail.recipe[i].ingredient%>"/>      
                     </div>
+    
                 </fieldset>
-                <div id="addLine">add line to recipe</div>
-                <label for="cocktail-notes">Notes on Preparation</label>
-                <textarea id="cocktail-notes"><%=cocktail.notes%></textarea>  
+                <% } %>
             </section>
-            <input type="submit" value="submit recipe" id="rec-submit">
+
+            <fieldset id="cocktail-details">
+                <section class="narrow">
+                    <label for="cocktail-method">Method</label>
+                    <input list="methods" name="method" id="cocktail-method" value="<%=cocktail.method%>">
+                    <datalist id="methods">
+                        <option value="Stirred">Stirred</option>
+                        <option value="Shaken">Shaken</option>
+                        <option value="Built">Built</option>
+                    </datalist>
+                </section>
+                
+                <section class="narrow">
+                    <label for="cocktail-glass">Glass</label>
+                    <input list="glasses" name="glass" id="cocktail-glass" value="<%=cocktail.glass%>">
+                    <datalist id="glasses">
+                        <option value="Rocks">Rocks</option>
+                        <option value="Double Rocks">Double Rocks</option>
+                        <option value="Cocktail">Cocktail</option>
+                        <option value="Martini">Martini</option>
+                        <option value="Collins">Collins</option>
+                        <option value="Highball">Highball</option>
+                        <option value="Nick and Nora">Nick and Nora</option>
+                        <option value="Hurricane">Hurricane</option>
+                        <option value="Tiki">Tiki</option>
+                        <option value="Tiki Mug">Tiki Mug</option>
+                        <option value="Mule">Mule</option>
+                        <option value="Shot">Shot</option>
+                    </datalist>
+                </section>
+              
+                <section class="wide">
+                    <label for="garnish">Garnish</label>
+                    <input type="text" name="garnish" id="cocktail-garnish" value="<%=cocktail.garnish%>"/>
+                </section> 
+            </fieldset>
+
+            <label for="cocktail-notes">Notes on Preparation</label>
+            <textarea id="cocktail-notes" name="notes"><%=cocktail.notes%></textarea>
+            
+            <input type="submit" value="Update Recipe" id="recipe-submit">
         </form> 
     </main>
          
     <script>
         const $recipe = $('#cocktail-recipe');
         const $recipeLine = $('#recipeLine');
-        
+        const $cocktailRecipe = $('#cocktail-recipe');
+
         const $addLineBtn = $('#addLine'); 
+        const $loseLineBtn = $('#loseLine');
 
         $addLineBtn.on('click', handleAddLine);
+        $loseLineBtn.on('click', handleLoseLine);
         
         function handleAddLine() {
-            $addLineBtn.before($recipeLine.clone());
+            $cocktailRecipe.append($recipeLine.clone());
         }
+
+        function handleLoseLine() {
+            $cocktailRecipe.children().last().remove();
+        }
+
     </script>   
 
 </body>

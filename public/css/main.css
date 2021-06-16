@@ -223,6 +223,7 @@ main > form > h4 {
 #recipeLine {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 #recipeLine div {
@@ -246,6 +247,7 @@ main > form > h4 {
 
 
 #recipe-actions {
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;

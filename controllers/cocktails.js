@@ -22,6 +22,14 @@ router.get('/new', (req, res) => {
     });
 });
 
+
+// Delete ALL
+router.delete('/', (req, res) => {
+    Cocktail.deleteMany({}, (error, allCocktails) => {});
+    res.redirect('/cocktails');
+});
+
+
 // Delete
 router.delete('/:id', (req, res) => {
     Cocktail.findByIdAndDelete(req.params.id, (error, deletedCocktail) => {
@@ -32,16 +40,11 @@ router.delete('/:id', (req, res) => {
 // Update
 router.put('/:id', (req, res) => {
     console.log(req.body);
-    let num_lines = req.body.measurement.length;
+    let num_lines = req.body.number.length;
     let recipe = [];
     for (let i = 0; i < num_lines; i++){
         let recipeLine = {};
-        if (req.body.measurement[i] === '0'){
-            recipeLine.measurement = '';
-        } else {
-            recipeLine.measurement = req.body.measurement[i];
-        }
-         
+        recipeLine.number = req.body.number[i];
         recipeLine.fraction = req.body.fraction[i];
         recipeLine.unit = req.body.unit[i];
         recipeLine.ingredient = req.body.ingredient[i];
@@ -79,12 +82,14 @@ router.post('/', (req, res) => {
     });
 });
 
+
 // Edit
 router.get('/:id/edit', (req, res) => {
-    
-    Cocktail.findById(req.params.id, (error, cocktail) => {
-        res.render('cocktails/edit.ejs', { cocktail });
-    });
+    Creator.find({}, (error, creators) => {
+        Cocktail.findById(req.params.id, (error, cocktail) => {
+            res.render('cocktails/edit.ejs', { cocktail, creators });
+        });
+    })  
 });
 
 

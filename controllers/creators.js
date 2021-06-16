@@ -20,7 +20,7 @@ router.get('/new', (req, res) => {
 });
 
 // Delete ALL
-router.delete('/delete', (req, res) => {
+router.delete('/', (req, res) => {
     Creator.deleteMany({}, (error, allCreators) => {});
     res.redirect('/creators');
 });
