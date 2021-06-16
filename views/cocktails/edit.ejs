@@ -32,9 +32,7 @@
             
             <label for="createdBy">Created by</label>
             <select name="createdBy" id="createdBy">
-                <% creators.forEach( creator => { %>
-                    <option value="<%=creator._id%>"><%=creator.name%></option>
-                <% }); %>
+                <option value="<%=cocktail.createdBy._id%>"><%=cocktail.createdBy.name%></option>
             </select>
 
             <label for="cocktail-description">Description</label>
@@ -56,9 +54,9 @@
                         <select name="number" id="number">
                             <% console.log(cocktail.recipe[i].number) %>
                             <% if (cocktail.recipe[i].number === ""){ %>
-                                <option value="" selected >0</option>
+                                <option value="0" selected >0</option>
                             <% } else { %>
-                                <option value="" >0</option>
+                                <option value="0" >0</option>
                             <% } %>
                             <% if (cocktail.recipe[i].number === "1"){ %>
                                 <option value="1" selected >1</option>
@@ -111,27 +109,46 @@
                     <div id="recipe-fraction">
                         <label for="fraction">Fraction</label>
                         <select name="fraction" id="fraction">
-                            
-                                <option value="" >0</option>
-                            
+                            <% if (cocktail.recipe[i].fraction === "0"){ %>
+                                <option value="0" selected>0</option>
+                            <% } else { %>     
+                                <option value="0">0</option>
+                            <% } %> 
+                            <% if (cocktail.recipe[i].fraction === "1/4"){ %>
+                                <option value="1/4" selected>&frac14;</option>
+                            <% } else { %>     
                                 <option value="1/4" >&frac14;</option>
-                            
+                            <% } %>    
+                            <% if (cocktail.recipe[i].fraction === "1/2"){ %>
+                                <option value="1/2" selected>&frac12;</option>
+                            <% } else { %>     
                                 <option value="1/2" >&frac12;</option>
+                            <% } %>    
                             <% if (cocktail.recipe[i].fraction === "3/4"){ %>
-                                <option value="3/4" selected >&frac34;</option>
-                            <% } else { %>
+                                <option value="3/4" selected>&frac34;</option>
+                            <% } else { %>     
                                 <option value="3/4" >&frac34;</option>
-                            <% } %>
-                                <option value="3/4" >&frac34;</option>
-                           
+                            <% } %>    
+                            <% if (cocktail.recipe[i].fraction === "1/8"){ %>
+                                <option value="1/8" selected>&frac18;</option>
+                            <% } else { %>     
                                 <option value="1/8" >&frac18;</option>
-                           
+                            <% } %>   
+                            <% if (cocktail.recipe[i].fraction === "3/8"){ %>
+                                <option value="3/8" selected>&frac38;</option>
+                            <% } else { %>     
                                 <option value="3/8" >&frac38;</option>
-                           
+                            <% } %>    
+                            <% if (cocktail.recipe[i].fraction === "5/8"){ %>
+                                <option value="5/8" selected>&frac58;</option>
+                            <% } else { %>     
                                 <option value="5/8" >&frac58;</option>
-                           
+                            <% } %> 
+                            <% if (cocktail.recipe[i].fraction === "7/8"){ %>
+                                <option value="7/8" selected>&frac78;</option>
+                            <% } else { %>     
                                 <option value="7/8" >&frac78;</option>
-                            
+                            <% } %>       
                         </select>
                     </div>
                     <div id="recipe-unit">

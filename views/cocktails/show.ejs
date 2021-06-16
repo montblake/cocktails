@@ -53,7 +53,7 @@
             
             <% if (cocktail.parent) { %>
                 <h4>Cocktail from which <%=cocktail.createdBy.name%>'s <%=cocktail.name%> was Forked</h4>
-                <p><%=cocktail.parent.name%></p>
+                <p><a href="<%=cocktail.parent._id%>"><%=cocktail.parent.name%></a></p>
             <% } %>
             
             <% if (cocktail.children.length) { %>
@@ -68,7 +68,7 @@
                             
             <a id="cocktail-edit"class="actions" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
             <input type="submit" value="Delete Cocktail" id="cocktail-delete"/>
-            <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/edit">Fork Cocktail</a>
+            <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/fork">Fork Cocktail</a>
         </form>
     </main>
 </body>

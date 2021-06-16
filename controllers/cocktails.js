@@ -83,20 +83,56 @@ router.post('/', (req, res) => {
 });
 
 
+
+// Create from FORK
+router.post('/fork', (req, res) => {
+    console.log(req.body);
+    let num_lines = req.body.number.length;
+    let recipe = [];
+    for (let i = 0; i < num_lines; i++){
+        let recipeLine = {};
+        if (req.body.number[i] === '0'){
+            recipeLine.number = '';
+        } else {
+            recipeLine.number = req.body.number[i];
+        }
+        recipeLine.fraction = req.body.fraction[i];
+        recipeLine.unit = req.body.unit[i];
+        recipeLine.ingredient = req.body.ingredient[i];
+        recipe.push(recipeLine);
+    }
+    req.body.recipe = recipe;
+    console.log(req.body);
+    Cocktail.create(req.body, (error, createdCocktail) => {
+        console.log(createdCocktail);
+        res.redirect('/cocktails');
+    });
+});
+
+
 // Edit
 router.get('/:id/edit', (req, res) => {
     Creator.find({}, (error, creators) => {
-        Cocktail.findById(req.params.id, (error, cocktail) => {
+        Cocktail.findById(req.params.id).populate('createdBy').exec((error, cocktail) => {
             res.render('cocktails/edit.ejs', { cocktail, creators });
         });
     })  
+});
+
+// FORK
+router.get('/:id/fork', (req, res) => {
+    Creator.find({}, (error, creators) => {
+        Cocktail.findById(req.params.id).populate('createdBy').exec((error, cocktail) => {
+            res.render('cocktails/fork.ejs', { cocktail, creators });
+        });
+    });
 });
 
 
 // Show
 router.get('/:id', async (req, res) => {
     try {
-        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy');
+        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('parent');
         res.render('cocktails/show.ejs', { cocktail });
     } catch (error) {
         console.log(error);
