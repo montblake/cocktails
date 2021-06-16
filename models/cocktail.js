@@ -7,18 +7,15 @@ const cocktailSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Author'
     },
+    description: String,
     method: String,
     glass: String,
     garnish: String,
     recipe: [{
-        measurement: String,
+        number: String,
         fraction: String,
         unit: String,
-        // ingredient could be a Model unto itself...
-        ingredient: {
-            type: Schema.Types.ObjectId,
-            ref: 'Ingredient'
-        }
+        ingredient: String,
     }],
     notes: String
 }, { timestamps: true });

@@ -45,61 +45,60 @@
             <textarea type="text" name="description" id="cocktail-description"></textarea>
 
             <section id="cocktail-recipe">
-                <label for="recipeLine">Ingredients</label>
-                <fieldset id="recipeLine">
-                    <section id="full-ingredient">
-                        <div id="recipe-number">
-                            <label for="number">Number</label>
-                            <select name="number" id="number">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5;</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8;">8</option>
-                                <option value="9">9</option>
-                            </select>
-                        </div>
-                        <div id="recipe-fraction">
-                            <label for="fraction">Fraction</label>
-                            <select name="fraction" id="fracton">
-                                <option value="">0</option>
-                                <option value="&frac14;">&frac14;</option>
-                                <option value="&frac12;">&frac12;</option>
-                                <option value="&frac34;">&frac34;</option>
-                                <option value="&frac14;">&frac18;</option>
-                                <option value="&frac12;">&frac38;</option>
-                                <option value="&frac34;">&frac58;</option>
-                                <option value="&frac34;">&frac78;</option>
-                            </select>
-                        </div>
-                        <div id="recipe-unit">
-                            <label for="unit">Unit</label>
-                            <select name="unit" id="unit" >
-                                <option value="oz">oz</option>
-                                <option value="dash">dash</option>
-                                <option value="barspoon">barspoon</option>
-                                <option value="tsp">tsp</option>
-                                <option value="tbsp">tbsp</option>
-                                <option value="ml">ml</option> 
-                            </select>
-                        </div>
-                        <div id="recipe-ingredient">
-                            <label for="ingredient">Ingredient</label>
-                            <input type="text" name="ingredient" id="ingredient" />      
-                        </div>
-                    </section>
-                    
-                    <section id="recipe-actions">
+                <header>
+                    <label for="recipeLine">Ingredients</label>
+                    <nav id="recipe-actions">
                         <div id="addLine">add ingredient</div>
                         <div id="loseLine">remove ingredient</div>
-                    </section>
-                </fieldset>
-
+                    </nav>
+                </header>
                 
+                <fieldset id="recipeLine" name="recipeLine">
+                    <div id="recipe-number">
+                        <label for="number">Number</label>
+                        <select name="number" id="number">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5;</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8;">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
+                    <div id="recipe-fraction">
+                        <label for="fraction">Fraction</label>
+                        <select name="fraction" id="fracton">
+                            <option value="">0</option>
+                            <option value="&frac14;">&frac14;</option>
+                            <option value="&frac12;">&frac12;</option>
+                            <option value="&frac34;">&frac34;</option>
+                            <option value="&frac14;">&frac18;</option>
+                            <option value="&frac12;">&frac38;</option>
+                            <option value="&frac34;">&frac58;</option>
+                            <option value="&frac34;">&frac78;</option>
+                        </select>
+                    </div>
+                    <div id="recipe-unit">
+                        <label for="unit">Unit</label>
+                        <select name="unit" id="unit" >
+                            <option value="oz">oz</option>
+                            <option value="dash">dash</option>
+                            <option value="barspoon">barspoon</option>
+                            <option value="tsp">tsp</option>
+                            <option value="tbsp">tbsp</option>
+                            <option value="ml">ml</option> 
+                        </select>
+                    </div>
+                    <div id="recipe-ingredient">
+                        <label for="ingredient">Ingredient</label>
+                        <input type="text" name="ingredient" id="ingredient" />      
+                    </div>
+    
+                </fieldset>
             </section>
 
             <fieldset id="cocktail-details">
@@ -138,10 +137,8 @@
                 </section> 
             </fieldset>
 
-
-
             <label for="cocktail-notes">Notes on Preparation</label>
-            <textarea id="cocktail-notes"></textarea>
+            <textarea id="cocktail-notes" name="notes"></textarea>
             
             <input type="submit" value="Submit Recipe" id="recipe-submit">
         </form> 
@@ -163,7 +160,7 @@
         }
 
         function handleLoseLine() {
-            $loseLineBtn.closest('fieldset').remove();
+            $cocktailRecipe.children().last().remove();
         }
 
     </script>   

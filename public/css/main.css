@@ -221,39 +221,28 @@ main > form > h4 {
 
 #recipeLine {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 
-#full-ingredient {
-   display: flex;
-   flex-direction: row;
-   margin-bottom: 10px;
- }
-
-#full-ingredient > div {
+#recipeLine div {
   display: flex;
   flex-direction: column;
-  color: black;
-  flex-basis: 100px;
-}
-
-#full-ingredient > div > select {
-  border: none;
-  font-size: 1.4rem;
-  height: 2.4rem;
   margin-right: 10px;
-} 
-
-#full-ingredient > div > input {
-  border: none;
-  font-size: 1.4rem;
-  height: 2.4rem;
+  flex-basis: 60px;
+  color: black;
 }
 
 #recipe-ingredient {
+  margin: 0;
   flex-grow: 3;
 }
+
+#recipeLine div > input, select {
+  height: 2.4rem;
+  font-size: 1.4rem;
+}
+
+
 
 #recipe-actions {
   display: flex;
@@ -290,4 +279,12 @@ main > form > h4 {
 #recipe-submit {
   background: purple;
   color: whitesmoke;
+}
+
+#recipe-actions {
+  margin-top: 1rem;
+}
+
+#cocktail-recipe {
+  margin-bottom: 2.4rem;
 }

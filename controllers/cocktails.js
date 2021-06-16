@@ -56,22 +56,23 @@ router.put('/:id', (req, res) => {
 
 // Create
 router.post('/', (req, res) => {
-    let num_lines = req.body.measurement.length;
+    console.log(req.body);
+    let num_lines = req.body.number.length;
     let recipe = [];
     for (let i = 0; i < num_lines; i++){
         let recipeLine = {};
-        if (req.body.measurement[i] === '0'){
-            recipeLine.measurement = '';
+        if (req.body.number[i] === '0'){
+            recipeLine.number = '';
         } else {
-            recipeLine.measurement = req.body.measurement[i];
+            recipeLine.number = req.body.number[i];
         }
-         
         recipeLine.fraction = req.body.fraction[i];
         recipeLine.unit = req.body.unit[i];
         recipeLine.ingredient = req.body.ingredient[i];
         recipe.push(recipeLine);
     }
     req.body.recipe = recipe;
+    console.log(req.body);
     Cocktail.create(req.body, (error, createdCocktail) => {
         console.log(createdCocktail);
         res.redirect('/cocktails');
