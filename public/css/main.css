@@ -82,7 +82,7 @@ a {
 main p {
   background: #666;
   border: 1px solid black;
-  padding: 20px 30px;
+  padding: 10px 20px;
 }
 
 p {
@@ -287,4 +287,22 @@ main > form > h4 {
 
 #cocktail-recipe {
   margin-bottom: 2.4rem;
+}
+
+#cocktail-edit,
+#cocktail-delete,
+#cocktail-fork {
+  background: purple;
+  color: whitesmoke;
+}
+
+#show-ingredients {
+  background: white;
+  padding: 10px 20px;
+}
+
+#show-ingredients li {
+  color: black;
+  font-size: 1.4rem;
+  display: block;
 }

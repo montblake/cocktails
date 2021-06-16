@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +10,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>Forking Cocktails</title>
 </head>
+
 <body>
-    <header>
-        <nav>
+    <header> 
+        <nav class="topNav cocktails">
             <ul>
                 <li>
                     <a href="/">Home</a>
@@ -21,36 +23,49 @@
                 </li>
             </ul>
         </nav>
-        <h1>Forking Cocktails</h1>
+        <h2>Forking Cocktails</h2>
     </header>
+
     <main>
-        <h2>Cocktail Attributes:</h2>
-        <ul>
-            <li>Name: <%= cocktail.name %></li>
-            <li>Created by: </%= cocktail.createdBy.name %></li>
-            <li>About: <%= cocktail.blurb %></li>
-            <li>Method: <%= cocktail.method %></li>
-            <li>Glass: <%= cocktail.glass %></li>
-            <li>Garnish: <%= cocktail.garnish %></li>
-        </ul>
-            <h3>Ingredients:</h3>
-            <ul class="ingredients">
-                <% cocktail.recipe.forEach(recipeLine => { %>
-                    <li><%= recipeLine.measurement + recipeLine.fraction + " " + recipeLine.unit + " " + recipeLine.ingredient %></li>
-                <% }); %>
+        <h3>Cocktail Page</h3>
+        <form action="/cocktails/<%=cocktail._id%>?_method=DELETE" method="POST">
+            <h4>Name</h4>
+            <p><%= cocktail.name %></p>
+            <h4>Created By</h4>
+            <p><%= cocktail.createdBy %></p>
+            <h4>Description</h4>
+            <p><%= cocktail.description %></p>
+            <h4>Ingredients</h4>
+            <ul id="show-ingredients">
+                <% for (let i = 0; i < cocktail.recipe.length; i++) { %>
+                    <li><%= cocktail.recipe[i].number + cocktail.recipe[i].fraction + " " + cocktail.recipe[i].unit + " " + cocktail.recipe[i].ingredient %> </li>
+                <% } %>
             </ul>
-            <h3>Notes:</h3>
+            
+                
+                
+               
+           
+           
+           
+            <h4>Method</h4>
+            <p><%= cocktail.method %></p>
+            <h4>Glass</h4>
+            <p><%= cocktail.glass %></p>
+            <h4>Garnish</h4>
+            <p><%= cocktail.garnish %></p>
+            <h4>Notes on Preparation</h4>
             <p><%= cocktail.notes %></p>
-        <ul>
-            <li>Date Created: <%= new Date(cocktail.createdAt).toLocaleDateString() %> </li>
-            <li>Last Update: <%= new Date(cocktail.updatedAt).toLocaleDateString() %></li>
-        </ul>
-        <nav class="actions-nav">
-            <a href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
-            <form action="/cocktails/<%=cocktail._id%>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete Cocktail" />
-            </form>
-        </nav>
-    </main>   
+            <h4>Parent Cocktail</h4>
+            <p></p>
+            <h4>Children Cocktails</h4>
+            <p></p>
+            
+            <a id="cocktail-edit"class="actions" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
+            <input type="submit" value="Delete Cocktail" id="cocktail-delete"/>
+            <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/edit">Fork Cocktail</a>
+        </form>
+    </main>
 </body>
+
 </html>
