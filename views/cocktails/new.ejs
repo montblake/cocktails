@@ -33,13 +33,11 @@
             <input type="text" name="name" id="cocktail-name">
             
             <label for="createdBy">Created by</label>
-            <input list="creators" name="creator" id="createdBy" />
-            <datalist id="creators">
-                <option value="">select a creator</option>
+            <select name="createdBy" id="createdBy">
                 <% creators.forEach( creator => { %>
-                    <option value="<%= creator.name %>"><%= creator.name %></option>
+                    <option value="<%=creator._id%>"><%=creator.name%></option>
                 <% }); %>
-            </datalist>
+            </select>
 
             <label for="cocktail-description">Description</label>
             <textarea type="text" name="description" id="cocktail-description"></textarea>

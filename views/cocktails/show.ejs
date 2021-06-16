@@ -32,7 +32,7 @@
             <h4>Name</h4>
             <p><%= cocktail.name %></p>
             <h4>Created By</h4>
-            <p><%= cocktail.createdBy %></p>
+            <p><%= cocktail.createdBy.name %></p>
             <h4>Description</h4>
             <p><%= cocktail.description %></p>
             <h4>Ingredients</h4>
@@ -41,13 +41,7 @@
                     <li><%= cocktail.recipe[i].number + cocktail.recipe[i].fraction + " " + cocktail.recipe[i].unit + " " + cocktail.recipe[i].ingredient %> </li>
                 <% } %>
             </ul>
-            
-                
-                
-               
-           
-           
-           
+          
             <h4>Method</h4>
             <p><%= cocktail.method %></p>
             <h4>Glass</h4>

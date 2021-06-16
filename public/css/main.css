@@ -106,10 +106,10 @@ p {
 main > form {
   background: #666;
   border: 1px solid black;
-  padding: 20px 30px;
+  padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 main > form > label {
@@ -120,14 +120,15 @@ main > form > input {
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
 }
 
 main > form > select {
+  margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 10px 20px;
-  margin-bottom: 1.6rem;
+  padding: 1rem 2rem;
+  height: 4rem;
 
 }
 
@@ -136,7 +137,7 @@ main > form > textarea {
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
 }
 
 main > form > input[type=submit] {

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const cocktailSchema = new Schema({
-    name: String,
+    name: { type: String, required: true },
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'Author'
