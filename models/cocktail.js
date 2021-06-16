@@ -17,7 +17,15 @@ const cocktailSchema = new Schema({
         unit: String,
         ingredient: String,
     }],
-    notes: String
+    notes: String,
+    parent: {
+        type: Schema.Types.ObjectId,
+        ref: 'Cocktail'
+    },
+    children: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Cocktail'
+    }]
 }, { timestamps: true });
 
 const Cocktail = mongoose.model('Cocktail', cocktailSchema);

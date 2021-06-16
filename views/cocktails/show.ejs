@@ -50,11 +50,22 @@
             <p><%= cocktail.garnish %></p>
             <h4>Notes on Preparation</h4>
             <p><%= cocktail.notes %></p>
-            <h4>Parent Cocktail</h4>
-            <p></p>
-            <h4>Children Cocktails</h4>
-            <p></p>
             
+            <% if (cocktail.parent) { %>
+                <h4>Cocktail from which <%=cocktail.createdBy.name%>'s <%=cocktail.name%> was Forked</h4>
+                <p><%=cocktail.parent.name%></p>
+            <% } %>
+            
+            <% if (cocktail.children.length) { %>
+                <h4>Cocktails Forked from <%=cocktail.createdBy.name%>'s <%=cocktail.name%></h4>
+                <ul>
+                    <% cocktail.children.forEach(child => { %>
+                        <li><%=child.name%></li>
+                    <% }) %>
+                </ul>
+            <% } %>
+            
+                            
             <a id="cocktail-edit"class="actions" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
             <input type="submit" value="Delete Cocktail" id="cocktail-delete"/>
             <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/edit">Fork Cocktail</a>
