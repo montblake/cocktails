@@ -133,7 +133,9 @@ router.get('/:id/fork', (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('parent');
-        res.render('cocktails/show.ejs', { cocktail });
+        const children = await Cocktail.find({ parent: req.params.id }).populate('children');
+        console.log(children);
+        res.render('cocktails/show.ejs', { cocktail, children });
     } catch (error) {
         console.log(error);
         res.redirect('/cocktails'); 
