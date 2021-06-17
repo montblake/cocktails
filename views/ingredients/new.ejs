@@ -28,6 +28,20 @@
         <form action="/ingredients" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" />
+            <label for="classification">Classification</label>
+            <select name="classification" id="classification">
+                <option value="Unclassified">Unclassified</option>
+                <option value="Spirit">Spirit</option>
+                <option value="Liqueur">Liqueur</option>
+                <option value="Syrup">Syrup</option>
+                <option value="Juice">Juice</option>
+                <option value="Bitters">Bitters</option>
+                <option value="Soda">Soda</option>
+                <option value="Aromatized Wine">Aromatized Wine</option>
+                <option value="Fortified Wine">Fortified Wine</option>
+                <option value="Sparkling Wine">Sparkling Wine</option>
+                <option value="Tincture">Tincture</option>
+            </select>
             <label for="notes">Notes</label>
             <textarea name="notes" id="notes"></textarea>
             <input id="ingredient-add" type="submit" value="Add Ingredient" />
