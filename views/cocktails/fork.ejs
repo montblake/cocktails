@@ -241,15 +241,6 @@
             <p><%= cocktail.name %> by <%= cocktail.createdBy.name %></p>
             <input type="hidden" name="parent" id="parent" value="<%=cocktail._id%>" />
 
-            <% if (cocktail.children.length) { %>
-            <h4>Forked BY</h4>
-            <ul id="childList">
-                <% cocktail.children.forEach(child => { %>
-                    <li><a href="/cocktails/<%=child._id%>"><%= child.name %></a> by <a href="/creators/child.createdBy._id"><%= child.createdBy.name %></a></li>
-                <% }) %>
-            </ul>
-            <% } %>
-
             <input type="submit" value="Update Recipe" id="recipe-submit">
         </form> 
     </main>
