@@ -112,10 +112,10 @@
                     <div id="recipe-fraction">
                         <label for="fraction">Fraction</label>
                         <select name="fraction" id="fraction">
-                            <% if (cocktail.recipe[i].fraction === "0"){ %>
-                                <option value="0" selected>0</option>
+                            <% if (cocktail.recipe[i].fraction === ""){ %>
+                                <option value="" selected>0</option>
                             <% } else { %>     
-                                <option value="0">0</option>
+                                <option value="">0</option>
                             <% } %> 
                             <% if (cocktail.recipe[i].fraction === "1/4"){ %>
                                 <option value="1/4" selected>&frac14;</option>

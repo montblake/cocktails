@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Creator = require('../models/creator');
 const Cocktail = require('../models/cocktail');
+const Author = require('../models/creator');
 
 
 // ===============================
@@ -59,16 +60,15 @@ router.get('/:id/edit', (req, res) => {
 // Show
 router.get('/:id', async (req, res) => {
     try {
-        const cocktails = await Cocktail.find({ createdBy: req.params.id });
+        const creator = await Creator.findById(req.params.id);
+        console.log(creator.name)
+        const cocktails = await Cocktail.find({ createdBy: creator._id });
         console.log(cocktails);
-        const creator = Creator.findById(req.params.id);
-        res.render('creators/show.ejs', {creator, cocktails})
-
+        res.render('creators/show.ejs', {creator, cocktails});
     } catch(error) {
         console.log(error);
     }
 });
-
 
 
 module.exports = router;

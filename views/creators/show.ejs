@@ -35,11 +35,11 @@
             <p><%= creator.about %></p>
             <h4>Date Joined</h4>
             <p><%= new Date(creator.createdAt).toLocaleDateString() %></p>
-            <% if (creator.cocktails) { %>
+            <% if (cocktails.length) { %>
                 <h4>Cocktails</h4>
             <ul class="index">
-                <% creator.cocktails.forEach(cocktail => { %>
-                    <li><a href="/cocktails/<%=cocktail._id%>">cocktail.name</a></li>
+                <% cocktails.forEach(cocktail => { %>
+                    <li><a href="/cocktails/<%=cocktail._id%>"><%=cocktail.name%></a></li>
                 <% }) %>
             </ul>
             <% } %>
