@@ -20,25 +20,27 @@ router.get('/new', (req, res) => {
     res.render('ingredients/new.ejs');
 });
 
-// // Delete ALL
-// router.delete('/', (req, res) => {
-//     Creator.deleteMany({}, (error, allCreators) => {});
-//     res.redirect('/creators');
-// });
+// Delete ALL
+router.delete('/', (req, res) => {
+    Ingredient.deleteMany({}, (error, allIngredients) => {});
+    res.redirect('/ingredients');
+});
 
-// // Delete
-// router.delete('/:id', (req, res) => {
-//     Creator.findByIdAndRemove(req.params.id, () => {
-//         res.redirect('/creators');
-//     });
-// });
+// Delete
+router.delete('/:id', (req, res) => {
+    Ingredient.findByIdAndRemove(req.params.id, () => {
+        res.redirect('/ingredients');
+    });
+});
 
-// // Update
-// router.put('/:id', (req, res) => {
-//     Creator.findByIdAndUpdate(req.params.id, req.body, () => {
-//         res.redirect('/creators');
-//     });
-// });
+
+// Update
+router.put('/:id', (req, res) => {
+    Ingredient.findByIdAndUpdate(req.params.id, req.body, () => {
+        res.redirect('/ingredients');
+    });
+});
+
 
 // Create
 router.post('/', (req, res) => {
@@ -47,14 +49,14 @@ router.post('/', (req, res) => {
     });
 });
 
-// // Edit
-// router.get('/:id/edit', (req, res) => {
-//     Creator.findById(req.params.id, (error, foundCreator) => {
-//         res.render('creators/edit.ejs', {
-//             creator: foundCreator
-//         });
-//     });
-// });
+
+// Edit
+router.get('/:id/edit', (req, res) => {
+    Ingredient.findById(req.params.id, (error, ingredient) => {
+        res.render('ingredients/edit.ejs', { ingredient });
+    });
+});
+
 
 // Show
 router.get('/:id', async (req, res) => {
