@@ -58,7 +58,7 @@
             
             <% if (children.length) { %>
                 <h4>Forked BY</h4>
-                <ul>
+                <ul id="show-children">
                     <% children.forEach(child => { %>
                         <li><a href="/cocktails/<%= child._id %>"><%=child.name%></a></li>
                     <% }) %>

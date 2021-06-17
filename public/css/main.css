@@ -166,6 +166,7 @@ main > form > ul {
   color: black;
   font-size: 1.4rem;
   padding: 1rem 2rem;
+
 }
 
 .index {
@@ -316,4 +317,15 @@ main > form > ul {
   color: black;
   font-size: 1.4rem;
   display: block;
+}
+
+#show-children {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#show-children li {
+  margin-right: 2rem;
 }
