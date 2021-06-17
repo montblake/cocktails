@@ -5,7 +5,7 @@ const cocktailSchema = new Schema({
     name: { type: String, required: true },
     createdBy: {
         type: Schema.Types.ObjectId,
-        ref: 'Author'
+        ref: 'Creator'
     },
     description: String,
     method: String,
@@ -15,7 +15,10 @@ const cocktailSchema = new Schema({
         number: String,
         fraction: String,
         unit: String,
-        ingredient: String,
+        ingredient: {
+            type: Schema.Types.ObjectId,
+            ref: 'Ingredient'
+        }
     }],
     notes: String,
     parent: {

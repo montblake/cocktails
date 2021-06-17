@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Cocktail = require('../models/cocktail');
 const Creator = require('../models/creator');
+const Ingredient = require('../models/ingredient');
 
 // ================================
 // ROUTES
@@ -16,10 +17,10 @@ router.get('/', (req, res) => {
 });
 
 // New
-router.get('/new', (req, res) => {
-    Creator.find({}, (error, creators) => {
-        res.render('cocktails/new.ejs', { creators });
-    });
+router.get('/new', async (req, res) => {
+    const creators = await Creator.find({});
+    const ingredients = await Ingredient.find({});
+    res.render('cocktails/new.ejs', { creators, ingredients });
 });
 
 
@@ -111,28 +112,27 @@ router.post('/fork', (req, res) => {
 
 
 // Edit
-router.get('/:id/edit', (req, res) => {
-    Creator.find({}, (error, creators) => {
-        Cocktail.findById(req.params.id).populate('createdBy').exec((error, cocktail) => {
-            res.render('cocktails/edit.ejs', { cocktail, creators });
-        });
-    })  
+router.get('/:id/edit', async (req, res) => {
+    const creators = await Creator.find({});
+    const ingredients = await Ingredient.find({});
+    const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
+    res.render('cocktails/edit.ejs', { cocktail, creators, ingredients });
+
 });
 
 // FORK
-router.get('/:id/fork', (req, res) => {
-    Creator.find({}, (error, creators) => {
-        Cocktail.findById(req.params.id).populate('createdBy').exec((error, cocktail) => {
-            res.render('cocktails/fork.ejs', { cocktail, creators });
-        });
-    });
+router.get('/:id/fork', async (req, res) => {
+    const creators = await Creator.find({});
+    const ingredients = await Ingredient.find({});
+    const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
+    res.render('cocktails/fork.ejs', { cocktail, creators, ingredients });
 });
 
 
 // Show
 router.get('/:id', async (req, res) => {
     try {
-        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('parent');
+        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('parent').populate('recipe.ingredient');
         const children = await Cocktail.find({ parent: req.params.id }).populate('children');
         console.log(children);
         res.render('cocktails/show.ejs', { cocktail, children });

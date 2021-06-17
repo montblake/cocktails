@@ -32,6 +32,8 @@ const creatorsController = require('./controllers/creators');
 app.use('/creators', creatorsController);
 const cocktailsController = require('./controllers/cocktails');
 app.use('/cocktails', cocktailsController);
+const ingredientsController = require('./controllers/ingredients');
+app.use('/ingredients', ingredientsController);
 
 
 // Routes

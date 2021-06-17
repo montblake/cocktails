@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Creator = require('../models/creator');
 const Cocktail = require('../models/cocktail');
-const Author = require('../models/creator');
+const Ingredient = require('../models/ingredient');
 
 
 // ===============================
