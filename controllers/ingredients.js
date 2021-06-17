@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const ingredient = await Ingredient.findById(req.params.id);
-        const cocktails = await Cocktail.find({ ingredient: ingredient._id });
+        const cocktails = await Cocktail.find({ 'recipe.ingredient': ingredient._id });
         res.render('ingredients/show.ejs', { ingredient, cocktails });
     } catch(error) {
         console.log(error);
