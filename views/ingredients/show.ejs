@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="topNav">
+        <nav class="topNav ingredients">
             <ul>
                 <li>
                     <a href="/">Home</a>
@@ -44,8 +44,8 @@
                 </ul>
                 <% } %>
 
-            <a class="actions" href="/ingredients/<%=ingredient._id%>/edit">Edit Ingredient</a>
-            <input type="submit" value="Delete Ingredient" />
+            <a class="actions ingredient-action" href="/ingredients/<%=ingredient._id%>/edit">Edit Ingredient</a>
+            <input id="ingredient-delete" type="submit" value="Delete Ingredient" />
         </form>
     </main>
 </body>

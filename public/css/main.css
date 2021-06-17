@@ -347,3 +347,17 @@ main > form > ul {
   color: rgb(36, 143, 201);
 }
 
+.ingredient-action {
+  background: rgb(36, 143, 201);
+  color: whitesmoke;
+}
+
+#ingredient-delete {
+  background: rgb(36, 143, 201);
+  color: whitesmoke;
+}
+
+#ingredient-add {
+  background: rgb(36, 143, 201);
+  color: whitesmoke;
+}
