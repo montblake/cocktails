@@ -4,6 +4,7 @@ const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const session = require('express-session');
 
 
 // Database Configuration
@@ -25,6 +26,12 @@ db.on('disconnected', () => console.log('Mongo disconnected'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false,
+}));
 
 
 // Controllers
@@ -34,13 +41,21 @@ const cocktailsController = require('./controllers/cocktails');
 app.use('/cocktails', cocktailsController);
 const ingredientsController = require('./controllers/ingredients');
 app.use('/ingredients', ingredientsController);
-
+const sessionsController = require('./controllers/sessions');
+app.use('/sessions', sessionsController);
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    if (req.session.currentUser) {
+        res.render('dashboard.ejs', {
+            currentUser: req.session.currentUser
+        });
+    } else {
+        res.render('index.ejs', {
+            currentUser: req.session.currentUser
+        });
+    }
 });
-
 
 // Listening
 const port = process.env.PORT || 3000;

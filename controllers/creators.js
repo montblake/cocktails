@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// New
+// New (REGISTRATION PAGE)
 router.get('/new', (req, res) => {
     res.render('creators/new.ejs');
 });
@@ -41,10 +41,11 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// Create
+// Create (REGISTRATION ROUTE)
 router.post('/', (req, res) => {
+    
     Creator.create(req.body, (error, createdCreator) => {
-        res.redirect('/creators');
+        res.redirect('/');
     });
 });
 
