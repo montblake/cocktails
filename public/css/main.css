@@ -12,7 +12,7 @@
 
 
 body {
-  padding: 40px;
+  padding: 0 40px;
   color: whitesmoke;
   font-family: 'Mulish', sans-serif;
 }
@@ -360,4 +360,31 @@ main > form > ul {
 #ingredient-add {
   background: rgb(36, 143, 201);
   color: whitesmoke;
+}
+
+
+#sessions-nav {
+  position: absolute;
+  top: 20px; right: 40px;
+  display: flex;
+}
+
+#sessions-nav a, input {
+  background: black;
+  color: white;
+  padding: 10px;
+  border: none;
+}
+
+#db-nav {
+  padding: 10px;
+  display: flex;
+}
+
+#db-nav li  {
+  display: inline;
+}
+
+#db-nav li a {
+  font-size: 1.6rem;
 }

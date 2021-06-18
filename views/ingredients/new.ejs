@@ -11,13 +11,34 @@
 </head>
 <body>
     <header>
-        <nav class="topNav ingredients">
-            <ul>
+        <nav id="sessions-nav">
+            <% if(currentUser) { %>
+                <a href="/">Home</a>
+                <form action="/sessions?_method=DELETE" method="POST">
+                    <input type="submit" value="Log Out" />
+                </form>
+            <% } else { %>
+                <a href="/">Home</a>
+                <a href="/creators/new">Register</a>
+                <a href="/sessions/new">Login</a>
+            <% } %>
+        </nav>
+        <nav class="topNav">
+            <ul id="db-nav">
                 <li>
-                    <a href="/">Home</a>
+                    <a id="authors" href="/creators">Creators</a>
+                </li>
+                <li class="plus">
+                    +
                 </li>
                 <li>
-                    <a href="/ingredients">Ingredient Index</a>
+                    <a id="cocktails" href="/cocktails">Cocktails</a>
+                </li>
+                <li class="plus">
+                    +
+                </li>
+                <li>
+                    <a id="ingredients" href="/ingredients">Ingredients</a>
                 </li>
             </ul>
         </nav>
@@ -28,6 +49,9 @@
         <form action="/ingredients" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" />
+            <label for="createdBy">Created By</label>
+            <input type="text" name="createdByVisual" id="createdBy" value="<%=currentUser.name%>" />
+            <input type="hidden" name="createdBy" value="<%=currentUser._id%>" />
             <label for="classification">Classification</label>
             <select name="classification" id="classification">
                 <option value="Unclassified">Unclassified</option>

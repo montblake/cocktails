@@ -11,13 +11,13 @@ const Cocktail = require('../models/cocktail');
 // Index
 router.get('/', (req, res) => {
     Ingredient.find({}, (error, ingredients) => {
-        res.render('ingredients/index.ejs', { ingredients });
+        res.render('ingredients/index.ejs', { ingredients, currentUser: req.session.currentUser });
     });
 });
 
 // New
 router.get('/new', (req, res) => {
-    res.render('ingredients/new.ejs');
+    res.render('ingredients/new.ejs', { currentUser: req.session.currentUser });
 });
 
 // Delete ALL
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
 // Edit
 router.get('/:id/edit', (req, res) => {
     Ingredient.findById(req.params.id, (error, ingredient) => {
-        res.render('ingredients/edit.ejs', { ingredient });
+        res.render('ingredients/edit.ejs', { ingredient, currentUser: req.session.currentUser });
     });
 });
 
@@ -61,9 +61,9 @@ router.get('/:id/edit', (req, res) => {
 // Show
 router.get('/:id', async (req, res) => {
     try {
-        const ingredient = await Ingredient.findById(req.params.id);
+        const ingredient = await Ingredient.findById(req.params.id).populate( 'createdBy' );
         const cocktails = await Cocktail.find({ 'recipe.ingredient': ingredient._id });
-        res.render('ingredients/show.ejs', { ingredient, cocktails });
+        res.render('ingredients/show.ejs', { ingredient, cocktails, currentUser: req.session.currentUser });
     } catch(error) {
         console.log(error);
     }

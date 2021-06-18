@@ -9,18 +9,17 @@ const Ingredient = require('../models/ingredient');
 // ================================
 
 // Index
-router.get('/', (req, res) => {
-    
+router.get('/', (req, res) => {   
     Cocktail.find({}, (error, cocktails) => {
-        res.render('cocktails/index.ejs', { cocktails });
+        res.render('cocktails/index.ejs', { cocktails, currentUser: req.session.currentUser });
     }); 
 });
 
 // New
 router.get('/new', async (req, res) => {
-    const creators = await Creator.find({});
+    const creator = await Creator.find({ _id: req.session.currentUser._id });
     const ingredients = await Ingredient.find({});
-    res.render('cocktails/new.ejs', { creators, ingredients });
+    res.render('cocktails/new.ejs', { creator, ingredients, currentUser: req.session.currentUser });
 });
 
 
@@ -90,6 +89,7 @@ router.post('/fork', (req, res) => {
     console.log(req.body);
     let num_lines = req.body.number.length;
     let recipe = [];
+ 
     for (let i = 0; i < num_lines; i++){
         let recipeLine = {};
         if (req.body.number[i] === '0'){
@@ -102,6 +102,7 @@ router.post('/fork', (req, res) => {
         recipeLine.ingredient = req.body.ingredient[i];
         recipe.push(recipeLine);
     }
+    
     req.body.recipe = recipe;
     console.log(req.body);
     Cocktail.create(req.body, (error, createdCocktail) => {
@@ -116,16 +117,15 @@ router.get('/:id/edit', async (req, res) => {
     const creators = await Creator.find({});
     const ingredients = await Ingredient.find({});
     const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
-    res.render('cocktails/edit.ejs', { cocktail, creators, ingredients });
+    res.render('cocktails/edit.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
 
 });
 
 // FORK
 router.get('/:id/fork', async (req, res) => {
-    const creators = await Creator.find({});
     const ingredients = await Ingredient.find({});
     const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
-    res.render('cocktails/fork.ejs', { cocktail, creators, ingredients });
+    res.render('cocktails/fork.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
 });
 
 
@@ -135,7 +135,7 @@ router.get('/:id', async (req, res) => {
         const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('parent').populate('recipe.ingredient');
         const children = await Cocktail.find({ parent: req.params.id }).populate('children');
         console.log(children);
-        res.render('cocktails/show.ejs', { cocktail, children });
+        res.render('cocktails/show.ejs', { cocktail, children, currentUser: req.session.currentUser });
     } catch (error) {
         console.log(error);
         res.redirect('/cocktails'); 

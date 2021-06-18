@@ -37,11 +37,11 @@ sessionsRouter.post('/', (req, res) => {
 
             // if passwords match
             if (passwordMatches) {
+                const currentId = foundUser._id;
                 // add the user to our session
                 req.session.currentUser = foundUser;
-
                 // redirect back to our home page
-                res.redirect('/');
+                res.redirect(`/creators/${currentId}`);
             } else {
                 // if the passwords don't match
                 res.send('Oops! Invalid credentials.');

@@ -44,12 +44,9 @@ app.use('/ingredients', ingredientsController);
 const sessionsController = require('./controllers/sessions');
 app.use('/sessions', sessionsController);
 
-// Routes
 app.get('/', (req, res) => {
     if (req.session.currentUser) {
-        res.render('dashboard.ejs', {
-            currentUser: req.session.currentUser
-        });
+        res.redirect(`/creators/${req.session.currentUser._id}`);
     } else {
         res.render('index.ejs', {
             currentUser: req.session.currentUser

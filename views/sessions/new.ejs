@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MEEN Auth Starter</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- SCRIPT IF WE ADD CONFIRM PASSWORD FUNTIONALITY -->
+    <!-- <script defer src="/js/password-script.js"></script> -->
+    <title>Forking Cocktails</title>
 </head>
-
 <body>
-	<%- include('../partials/nav.ejs')  %>
-	<h1>Login</h1>
-	<form action='/sessions' method='POST'>
-		<label for="email">Email:</label>
-		<input type="email" name="email" id="email" />
+    <header>
+        <%- include('../partials/nav.ejs') %>
+        <nav class="topNav">
+            <ul id="db-nav">
+                <li>
+                    <a id="authors" href="/creators">Creators</a>
+                </li>
+                <li class="plus">
+                    +
+                </li>
+                <li>
+                    <a id="cocktails" href="/cocktails">Cocktails</a>
+                </li>
+                <li class="plus">
+                    +
+                </li>
+                <li>
+                    <a id="ingredients" href="/ingredients">Ingredients</a>
+                </li>
+            </ul>
+        </nav>
+        <h2 class="interior">Forking Cocktails</h2>
+    </header>
+    <main>
+        <h1>Login</h1>
+		<form action='/sessions' method='POST'>
+			<label for="email">Email:</label>
+			<input type="email" name="email" id="email" />
 
-		<label for="password">Password:</label>
-		<input type="password" name="password" id="password" />
+			<label for="password">Password:</label>
+			<input type="password" name="password" id="password" />
 
-		<input type="submit" value="Login">
-	</form>
+			<input type="submit" value="Login">
+		</form>
+    </main>
+</body>
+</html>
 </body>
 
 </html>

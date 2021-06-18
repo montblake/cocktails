@@ -13,13 +13,34 @@
 
 <body>
     <header> 
-        <nav class="topNav cocktails">
-            <ul>
+        <nav id="sessions-nav">
+            <% if(currentUser) { %>
+                <a href="/">Home</a>
+                <form action="/sessions?_method=DELETE" method="POST">
+                    <input type="submit" value="Log Out" />
+                </form>
+            <% } else { %>
+                <a href="/">Home</a>
+                <a href="/creators/new">Register</a>
+                <a href="/sessions/new">Login</a>
+            <% } %>
+        </nav>
+        <nav class="topNav">
+            <ul id="db-nav">
                 <li>
-                    <a href="/">Home</a>
+                    <a id="authors" href="/creators">Creators</a>
+                </li>
+                <li class="plus">
+                    +
                 </li>
                 <li>
-                    <a href="/cocktails">Cocktail Index</a>
+                    <a id="cocktails" href="/cocktails">Cocktails</a>
+                </li>
+                <li class="plus">
+                    +
+                </li>
+                <li>
+                    <a id="ingredients" href="/ingredients">Ingredients</a>
                 </li>
             </ul>
         </nav>
@@ -64,11 +85,15 @@
                     <% }) %>
                 </ul>
             <% } %>
-            
-                            
+        <% if (currentUser) { %>    
+        <% if (currentUser._id == cocktail.createdBy._id){ %>                     
             <a id="cocktail-edit"class="actions" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
             <input type="submit" value="Delete Cocktail" id="cocktail-delete"/>
+        <% } %>
+        
             <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/fork">Fork Cocktail</a>
+       <% } %>
+
         </form>
     </main>
 </body>
