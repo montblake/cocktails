@@ -45,5 +45,5 @@ app.get('/', (req, res) => {
 // Listening
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log("Houston, we have contact on port ", port);
+    console.log("Houston, we have contact on port", port);
 });
