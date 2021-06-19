@@ -1,6 +1,8 @@
+// Dependencies
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Define Schema
 const cocktailSchema = new Schema({
     name: { type: String, required: true },
     createdBy: {
@@ -27,6 +29,8 @@ const cocktailSchema = new Schema({
     }
 }, { timestamps: true });
 
+// Turn Schema into Model, save to Variable
 const Cocktail = mongoose.model('Cocktail', cocktailSchema);
 
+// Make Model Available
 module.exports = Cocktail;
