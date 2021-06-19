@@ -13,48 +13,17 @@
 
 <body>
     <header>
-        <nav id="sessions-nav">
-            <% if(currentUser) { %>
-                <a href="/">Home</a>
-                <form action="/sessions?_method=DELETE" method="POST">
-                    <input type="submit" value="Log Out" />
-                </form>
-            <% } else { %>
-                <a href="/">Home</a>
-                <a href="/creators/new">Register</a>
-                <a href="/sessions/new">Login</a>
-            <% } %>
-        </nav>
-        <nav class="topNav">
-            <ul id="db-nav">
-                <li>
-                    <a id="authors" href="/creators">Creators</a>
-                </li>
-                <li class="plus">
-                    +
-                </li>
-                <li>
-                    <a id="cocktails" href="/cocktails">Cocktails</a>
-                </li>
-                <li class="plus">
-                    +
-                </li>
-                <li>
-                    <a id="ingredients" href="/ingredients">Ingredients</a>
-                </li>
-            </ul>
-        </nav>
-        <h2>Forking Cocktails</h2>
+        <%- include('../partials/header.ejs') %>
     </header>
     <main>
     <% if (currentUser) { %>
         <% if (currentUser._id == creator._id){ %>
-        <h3>Creator Dashboard</h3>
+        <h2>Dashboard</h2>
         <% } %>
     <% } else { %>
-        <h3>Creator Page</h3>
+        <h2>Person</h2>
     <% } %>
-        <form action="/creators/<%=creator._id%>?_method=DELETE" method="POST">
+        <form class="show-form people-bg" action="/creators/<%=creator._id%>?_method=DELETE" method="POST">
             <h4>Name</h4>
             <p><%= creator.name %></p>
             <h4>About</h4>

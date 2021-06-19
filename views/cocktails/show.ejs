@@ -12,44 +12,13 @@
 </head>
 
 <body>
-    <header> 
-        <nav id="sessions-nav">
-            <% if(currentUser) { %>
-                <a href="/">Home</a>
-                <form action="/sessions?_method=DELETE" method="POST">
-                    <input type="submit" value="Log Out" />
-                </form>
-            <% } else { %>
-                <a href="/">Home</a>
-                <a href="/creators/new">Register</a>
-                <a href="/sessions/new">Login</a>
-            <% } %>
-        </nav>
-        <nav class="topNav">
-            <ul id="db-nav">
-                <li>
-                    <a id="authors" href="/creators">Creators</a>
-                </li>
-                <li class="plus">
-                    +
-                </li>
-                <li>
-                    <a id="cocktails" href="/cocktails">Cocktails</a>
-                </li>
-                <li class="plus">
-                    +
-                </li>
-                <li>
-                    <a id="ingredients" href="/ingredients">Ingredients</a>
-                </li>
-            </ul>
-        </nav>
-        <h2>Forking Cocktails</h2>
+    <header>
+        <%- include('../partials/header.ejs') %>
     </header>
 
     <main>
-        <h3>Cocktail Page</h3>
-        <form action="/cocktails/<%=cocktail._id%>?_method=DELETE" method="POST">
+        <h2>Cocktail Page</h2>
+        <form class="show-form cocktails-bg" action="/cocktails/<%=cocktail._id%>?_method=DELETE" method="POST">
             <h4>Name</h4>
             <p><%= cocktail.name %></p>
             <h4>Created By</h4>

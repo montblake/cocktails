@@ -1,0 +1,33 @@
+<nav class="topNav">
+	<ul id="sessions-nav">
+		<% if(currentUser) { %>
+			<li><a class="users" href="/">Home</a></li>		
+			<li>
+				<form action="/sessions?_method=DELETE" method="POST">
+					<input class="users" type="submit" value="Log Out" />
+				</form>
+			</li>
+		<% } else { %>
+			<li><a class="users" href="/creators/new">Register</a></li>
+			<li><a class="users" href="/sessions/new">Login</a></li>
+		<% } %>
+	</ul>
+	<ul id="db-nav">
+		<li>
+			<a class="cocktails" href="/cocktails">Cocktails</a>
+		</li>
+		<li class="plus">
+			+
+		</li>
+		<li>
+			<a class="ingredients" href="/ingredients">Ingredients</a>
+		</li>
+		<li class="plus">
+			+
+		</li>
+		<li>
+			<a class="people" href="/creators">People</a>
+		</li>
+	</ul>
+</nav>
+<h1>Forking Cocktails</h1>

@@ -13,31 +13,11 @@
 </head>
 <body>
     <header>
-        <%- include('../partials/nav.ejs') %>
-        <nav class="topNav">
-            <ul id="db-nav">
-                <li>
-                    <a id="authors" href="/creators">Creators</a>
-                </li>
-                <li class="plus">
-                    +
-                </li>
-                <li>
-                    <a id="cocktails" href="/cocktails">Cocktails</a>
-                </li>
-                <li class="plus">
-                    +
-                </li>
-                <li>
-                    <a id="ingredients" href="/ingredients">Ingredients</a>
-                </li>
-            </ul>
-        </nav>
-        <h2 class="interior">Forking Cocktails</h2>
+        <%- include('../partials/header.ejs') %>     
     </header>
     <main>
-        <h3>New Creator</h3>
-        <form action="/creators" method="POST">
+        <h2>New Person</h2>
+        <form class="show-form users-bg" action="/creators" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" />
             <label for="email">Email</label>

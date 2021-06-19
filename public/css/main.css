@@ -12,110 +12,178 @@
 
 
 body {
-  padding: 0 40px;
-  color: whitesmoke;
+  padding: 40px;
   font-family: 'Mulish', sans-serif;
+  
 }
 
 header {
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-h1,h2,h3 {
+main {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.people {
+  color: orange;
+}
+
+.people-bg-quarter {
+  background: rgba(250, 164, 0, .25);
+}
+
+.people-bg {
+  background: rgba(250, 164, 0, 1);
+}
+
+.cocktails {
+  color: purple;
+}
+
+.cocktails-bg-quarter {
+  background: rgba(128, 0, 128, .25);
+}
+
+.cocktails-bg {
+  background: rgba(128, 0, 128, 1);
+}
+
+.ingredients {
+  color: rgb(36, 143, 201);
+}
+
+.ingredients-bg-quarter {
+  background: rgba(36, 143, 201, .25);
+}
+
+.ingredients-bg {
+  background: rgba(36, 143, 201, 1);
+}
+
+.users {
   color: black;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Merriweather', serif;
-  margin: 0;
+,users-bg {
+  background: rgba(0, 0, 0, 1);
 }
 
-h1 {
-  font-size: 6.0rem;
+.text-light {
+  color: whitesmoke;
 }
 
-h2 {
-  font-size: 4.8rem;
-  margin-bottom: -10px;
+.bg-light {
+  background: whitesmoke;
 }
 
-.interior {
-  font-size: 3.6rem;
-  margin-bottom: -10px;
+.plus {
+  font-size: 1.6rem;
 }
 
-h3 {
-  margin-top: -3.2rem;
-  font-size: 8.4rem;
-}
-
+/* SOME GENERAL PREFERENCES */
 ul {
   list-style: none;
   padding: 0;
 }
 
-li {
-  display: inline;
-}
-
 a {
-  color: orange;
-  text-decoration: none;
+  text-decoration: none
 }
 
-#authors {
-  color: orange;
-  font-size: 3.2rem;
+a:hover {
+  text-decoration: underline;
 }
 
-#cocktails {
-  color: purple;
-  font-size: 3.2rem;
-}
+/* TYPOGRAPHY */
 
-#ingredients {
-  color: rgb(36, 143, 201);
-  font-size: 3.2rem;
-}
-
-.plus {
+h1,h2,h3 {
   color: black;
-  font-size: 2.4rem;
-  margin-left: .5rem;
+  font-family: 'Merriweather', serif;
+  margin: 0;
 }
 
-main p {
-  background: #666;
-  border: 1px solid black;
-  padding: 10px 20px;
+h4, h5, h6 {
+  font-family: 'Mulish', sans-serif;
+  margin: 0;
 }
+
+
+h1 {
+  font-size: 4.8rem;
+  margin: 0.6rem 0 -.6rem 0;
+}
+
+h2 {
+  font-size: 4.8rem;
+  margin-bottom: 4.8rem;
+}
+
+h3 {
+  margin-top: 4.8rem;
+  font-size: 4.8rem;
+}
+
 
 p {
   font-size: 1.4rem;
+}
 
+
+
+
+ /* HEADER STYLING */
+.topNav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+#db-nav {
+  display: flex;
+}
+
+#db-nav li {
+   margin-right: 1rem;
+}
+
+#sessions-nav {
+  display: flex;
+}
+
+#sessions-nav li {
+  margin-left: 1rem;
 }
 
 .topNav li {
-  display: block;
-  font-size: 1.6rem;
-
+  font-size: 2rem;
 }
 
 .topNav input {
   border: none;
   background: none;
   padding: 0;
-  color: orange;
 }
 
-main > form {
-  background: #666;
-  border: 1px solid black;
-  padding: 2rem 3rem;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
+
+/* MAIN STYLING */
+main p {
+  background: #999;
+  border: 1px solid #666;
+  padding: .6rem;
 }
+
+
 
 main > form > label {
   font-size: 1.4rem;
@@ -125,24 +193,24 @@ main > form > input {
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 
 main > form > select {
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
   height: 4rem;
 
 }
 
 main > form > textarea {
-  min-height: 4.8rem;
+  min-height: 2.4rem;
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 
 main > form > input[type=submit] {
@@ -154,36 +222,8 @@ main > form > input[type=submit] {
   padding: 0;
 }
 
-main > form > p {
-  background: white;
-  color: black;
-  margin: 0 0 15px 0;
-}
 
-main > form > h4 {
-  font-size: 1.4rem;
-  margin: 0 0 5px 0;
-}
 
-main > form > ul {
-  background: white;
-  margin-bottom: 1.6rem;
-  color: black;
-  font-size: 1.4rem;
-  padding: 1rem 2rem;
-
-}
-
-.index {
-  margin-top: 0;
-  margin-bottom: 3.2rem;
-}
-
-.index li {
-  display: block;
-  font-size: 1.6rem;
-  text-transform: capitalize;
-}
 
 .actions {
   background: orange;
@@ -194,6 +234,8 @@ main > form > ul {
   text-align: center;
   margin-bottom: 10px;
 }
+
+/* COMPlICATED COCKTAIL FORM DETAILS */
 
 #cocktail-details {
   border: none;
@@ -285,13 +327,9 @@ main > form > ul {
 
 }
 
-.cocktails a {
-  color: purple;
-}
+/* STYLING FOR THE COCKTAILS DB */
 
-.cocktails input {
-  color: purple;
-}
+
 
 #recipe-submit {
   background: purple;
@@ -313,39 +351,10 @@ main > form > ul {
   color: whitesmoke;
 }
 
-#show-ingredients {
-  background: white;
-  padding: 10px 20px;
-}
 
-#show-ingredients li {
-  color: black;
-  font-size: 1.4rem;
-  display: block;
-}
 
-#show-children {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-}
+/* STYLING FOR INGREDIENTS DB */
 
-#show-children li {
-  margin-right: 2rem;
-}
-
-.ingredients {
-  color: rgb(36, 143, 201);
-}
-
-.ingredients a {
-  color: rgb(36, 143, 201);
-}
-
-.ingredients input {
-  color: rgb(36, 143, 201);
-}
 
 .ingredient-action {
   background: rgb(36, 143, 201);
@@ -363,28 +372,94 @@ main > form > ul {
 }
 
 
-#sessions-nav {
-  position: absolute;
-  top: 20px; right: 40px;
+/* NEW USEFUL */
+.index {
+  padding: 2rem 3rem;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#sessions-nav a, input {
-  background: black;
-  color: white;
-  padding: 10px;
-  border: none;
-}
-
-#db-nav {
-  padding: 10px;
-  display: flex;
-}
-
-#db-nav li  {
-  display: inline;
-}
-
-#db-nav li a {
+.index li { 
   font-size: 1.6rem;
+  width: 30%;
+  
+}
+
+/* GENERAL SHAPE AND LAYOUT OF MAIN > FORM FOR SHOW AND WHAT ELSE? */
+.show-form {
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+}
+
+.show-form > p, .show-form > ul {
+  background: whitesmoke;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+}
+
+#show-ingredients {
+  background: whitesmoke;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+}
+
+#show-ingredients li {
+  color: black;
+  font-size: 1.6rem;
+}
+
+#show-children {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#show-children li {
+  margin-right: 2rem;
+}
+
+@media only screen and (max-width: 480px) {
+  h1, h2 {
+    font-size: 3rem;
+  }
+
+  .index {
+     padding: 1rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  h1, h2 {
+    font-size: 4rem;
+  }
+
+  .show-form {
+    padding: 1rem;
+  }
+
+  .topNav {
+    flex-direction: column;
+  }
+  
+  .index li {
+    width: 50%;
+    font-size: 1.6rem;
+  }
+
+  #sessions-nav {
+    flex-direction: column;
+  }
+
+  #sessions-nav li {
+    margin-left: 0;
+  }
 }
