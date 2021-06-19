@@ -22,12 +22,13 @@
         <% if (currentUser) { %>
             <% if (currentUser._id == person._id){ %>
             <h2>Dashboard</h2>
+            <form class="show-form users-bg" action="/people/<%=person._id%>?_method=DELETE" method="POST">
             <% } %>
         <% } else { %>
             <h2>Person Page</h2>
+            <form class="show-form people-bg" action="/people/<%=person._id%>?_method=DELETE" method="POST">
         <% } %>
 
-        <form class="show-form people-bg" action="/people/<%=person._id%>?_method=DELETE" method="POST">
             <!-- STORED PERSON DATA -->
             <h4>Name</h4>
             <p><%= person.name %></p>
@@ -49,12 +50,15 @@
             <!-- IF USER IS LOGGED IN... IF THIS IS THEIR PAGE, GIVE THEM ACCESS TO CREATION CONTROLs -->
             <% if (currentUser) { %>
                 <% if (currentUser._id == person._id){ %>
-                
-                <a class="actions" href="/cocktails/new">Add New Cocktail</a>
-                <a class="actions" href="/ingredients/new">Add New Ingredient</a>
+                <section class="registered-options">
+                    <a class="btn cocktails-bg text-light" href="/cocktails/new">Add New Cocktail</a>
+                    <a class="btn ingredients-bg text-light href="/ingredients/new">Add New Ingredient</a>
 
-                <a class="actions" href="/people/<%=person._id%>/edit">Edit User Information</a>
-                <input type="submit" value="Delete Account" />
+                    <a class="btn people-bg text-light href="/people/<%=person._id%>/edit">Edit User Information</a>
+                    <input class="btn warning" type="submit" value="Delete Account" />
+                </section>    
+                    
+
                 <% } %>
             <% } %>
             

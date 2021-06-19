@@ -16,8 +16,8 @@
     </header>
 
     <main>
-        <h3>Add Cocktail</h3>
-        <form action="/cocktails" method="POST" id="recipe">
+        <h2>Add Cocktail</h2>
+        <form class="show-form cocktails-bg" action="/cocktails" method="POST" id="recipe">
             
             <label for="name">Name</label>
             <input type="text" name="name" id="cocktail-name">
@@ -33,8 +33,8 @@
                 <header>
                     <label for="recipeLine">Ingredients</label>
                     <nav id="recipe-actions">
-                        <div id="addLine">add ingredient</div>
-                        <div id="loseLine">remove ingredient</div>
+                        <div id="addLine" class="btn people-bg text-light">Add Ingredient</div>
+                        <div id="loseLine" class="btn people-bg text-light">Remove Ingredient</div>
                     </nav>
                 </header>
                 
@@ -81,6 +81,7 @@
                     <div id="recipe-ingredient">
                         <label for="ingredient">Ingredient</label>
                         <select name=ingredient id="ingredient">
+                                <option value="">Select Ingredient</option>
                             <% ingredients.forEach(ingredient => { %>
                                 <option value="<%=ingredient._id%>"><%=ingredient.name%></option>
                             <% }) %>
@@ -129,7 +130,7 @@
             <label for="cocktail-notes">Notes on Preparation</label>
             <textarea id="cocktail-notes" name="notes"></textarea>
             
-            <input type="submit" value="Submit Recipe" id="recipe-submit">
+            <input class="btn people-bg text-light" type="submit" value="Submit Recipe" id="recipe-submit">
         </form> 
     </main>
          

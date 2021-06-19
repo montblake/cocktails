@@ -18,6 +18,7 @@
     <main>
         <h2>New Person</h2>
         <form class="show-form users-bg" action="/people" method="POST">
+
             <label for="name">Name</label>
             <input type="text" name="name" id="name" />
             <label for="email">Email</label>
@@ -29,7 +30,9 @@
             <span id="message"></span>
             <label for="about">About</label>
             <textarea name="about" id="about"></textarea>
-            <input id="register-btn" type="submit" value="Register" />
+
+        
+            <input class="btn people-bg text-light" type="submit" value="Register" />
         </form>
     </main>
 </body>

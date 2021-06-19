@@ -14,8 +14,8 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <h3>Add Ingredient</h3>
-        <form action="/ingredients" method="POST">
+        <h2>Add Ingredient</h2>
+        <form class="show-form ingredients-bg" action="/ingredients" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" />
             <label for="createdBy">Created By</label>
@@ -37,7 +37,7 @@
             </select>
             <label for="notes">Notes</label>
             <textarea name="notes" id="notes"></textarea>
-            <input id="ingredient-add" type="submit" value="Add Ingredient" />
+            <input class="btn cocktails-bg text-light" type="submit" value="Add Ingredient" />
         </form>
     </main>
 </body>

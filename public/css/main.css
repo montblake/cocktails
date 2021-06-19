@@ -1,16 +1,33 @@
+/* FONT IMPORTS */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400&display=swap');
 
+
+/* GLOBAL */
 :root {
   font-size: 10px;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 
-
+/* STRUCTURE */
 body {
   padding: 40px;
   font-family: 'Mulish', sans-serif;
@@ -33,6 +50,7 @@ main {
   margin: 0 auto;
 }
 
+/* COLORS */
 .people {
   color: orange;
 }
@@ -73,7 +91,7 @@ main {
   color: black;
 }
 
-,users-bg {
+.users-bg {
   background: rgba(0, 0, 0, 1);
 }
 
@@ -85,26 +103,8 @@ main {
   background: whitesmoke;
 }
 
-.plus {
-  font-size: 1.6rem;
-}
-
-/* SOME GENERAL PREFERENCES */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-a {
-  text-decoration: none
-}
-
-a:hover {
-  text-decoration: underline;
-}
 
 /* TYPOGRAPHY */
-
 h1,h2,h3 {
   color: black;
   font-family: 'Merriweather', serif;
@@ -130,6 +130,11 @@ h2 {
 h3 {
   margin-top: 4.8rem;
   font-size: 4.8rem;
+}
+
+h4 {
+  color: whitesmoke;
+  
 }
 
 
@@ -175,46 +180,34 @@ p {
   padding: 0;
 }
 
+.plus {
+  font-size: 1.6rem;
+}
+
 
 /* MAIN STYLING */
-main p {
-  background: #999;
-  border: 1px solid #666;
-  padding: .6rem;
-}
-
-
-
 main > form > label {
   font-size: 1.4rem;
+  color: whitesmoke;
 }
 
-main > form > input {
+main > form > input,
+main > form > select,
+main > form > textarea {
   margin-bottom: 1.6rem;
   color: black;
   font-size: 1.4rem;
   padding: 1rem;
-}
-
-main > form > select {
-  margin-bottom: 1.6rem;
-  color: black;
-  font-size: 1.4rem;
-  padding: 1rem;
+  width: 100%;
   height: 4rem;
-
 }
 
 main > form > textarea {
-  min-height: 2.4rem;
-  margin-bottom: 1.6rem;
-  color: black;
-  font-size: 1.4rem;
-  padding: 1rem;
+  min-height: 8rem;
+  resize: vertical;
 }
 
 main > form > input[type=submit] {
-  background: orange;
   font-size: 1.6rem;
   height: 3.6rem;
   width: 160px;
@@ -222,21 +215,60 @@ main > form > input[type=submit] {
   padding: 0;
 }
 
-
-
-
-.actions {
-  background: orange;
-  font-size: 1.6rem;
-  width: 160px;
-  color: black;
-  padding: 1rem;
-  text-align: center;
-  margin-bottom: 10px;
+/* INDEX PAGES STYLING */
+.index {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* COMPlICATED COCKTAIL FORM DETAILS */
+.index li { 
+  font-size: 1.6rem;
+  width: 30%;
+}
 
+
+/* SHOW-PAGES */
+.show-form {
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+}
+
+.show-form > p, .show-form > ul {
+  background: whitesmoke;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+#show-ingredients {
+  background: whitesmoke;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+}
+
+#show-ingredients li {
+  color: black;
+  font-size: 1.6rem;
+}
+
+#show-children {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#show-children li {
+  margin-right: 2rem;
+}
+
+
+/* COMPlICATED COCKTAIL FORM DETAILS */
 #cocktail-details {
   border: none;
   padding: 0;
@@ -244,7 +276,6 @@ main > form > input[type=submit] {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 1.6rem;
-
 }
 
 #cocktail-details input {
@@ -255,6 +286,7 @@ main > form > input[type=submit] {
 
 #cocktail-details label {
   font-size: 1.4rem;
+  color: whitesmoke;
 }
 
 #cocktail-details section {
@@ -270,10 +302,9 @@ main > form > input[type=submit] {
   min-height: 12.0rem;
 }
 
-
 #cocktail-recipe label {
   font-size: 1.4rem;
-  color: white;
+  color: whitesmoke;
 }
 
 #recipeLine {
@@ -300,8 +331,6 @@ main > form > input[type=submit] {
   font-size: 1.4rem;
 }
 
-
-
 #recipe-actions {
   width: 100%;
   display: flex;
@@ -309,53 +338,25 @@ main > form > input[type=submit] {
   align-items: center;
 }
 
-#recipe-actions > div {
-  background: purple;
-  padding: 5px 10px;
-  color: whitesmoke;
-  font-size: 1.4rem;
-}
 
-#addLine {
-  margin-right: 10px;
-  background: purple;
 
-}
 
-#loseLine {
-  background: purple;
 
-}
 
 /* STYLING FOR THE COCKTAILS DB */
 
 
-
-#recipe-submit {
-  background: purple;
-  color: whitesmoke;
-}
-
 #recipe-actions {
-  margin-top: 1rem;
+  margin: .6rem 0 1.6rem 0;
 }
 
 #cocktail-recipe {
   margin-bottom: 2.4rem;
 }
 
-#cocktail-edit,
-#cocktail-delete,
-#cocktail-fork {
-  background: purple;
-  color: whitesmoke;
-}
-
 
 
 /* STYLING FOR INGREDIENTS DB */
-
-
 .ingredient-action {
   background: rgb(36, 143, 201);
   color: whitesmoke;
@@ -366,63 +367,30 @@ main > form > input[type=submit] {
   color: whitesmoke;
 }
 
-#ingredient-add {
-  background: rgb(36, 143, 201);
+.btn {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  font-size: 1.4rem;
+}
+
+.warning {
+  margin-left: auto;
+  margin-right: 0;
+  background: red;
+  border: none;
   color: whitesmoke;
 }
 
-
-/* NEW USEFUL */
-.index {
-  padding: 2rem 3rem;
+.registered-options {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  margin: 2rem 0;
 }
 
-.index li { 
-  font-size: 1.6rem;
-  width: 30%;
-  
-}
 
-/* GENERAL SHAPE AND LAYOUT OF MAIN > FORM FOR SHOW AND WHAT ELSE? */
-.show-form {
-  border: 1px solid black;
-  padding: 1rem 2rem;
-  margin-top: 1rem;
-}
-
-.show-form > p, .show-form > ul {
-  background: whitesmoke;
-  border: 1px solid black;
-  padding: 1rem 2rem;
-}
-
-#show-ingredients {
-  background: whitesmoke;
-  border: 1px solid black;
-  padding: 1rem 2rem;
-}
-
-#show-ingredients li {
-  color: black;
-  font-size: 1.6rem;
-}
-
-#show-children {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-#show-children li {
-  margin-right: 2rem;
-}
-
+/* RESPONSIVE STYLING */
 @media only screen and (max-width: 480px) {
   h1, h2 {
     font-size: 3rem;

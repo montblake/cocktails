@@ -26,7 +26,7 @@ sessionsRouter.delete('/', async (req, res) => {
 // Create (login route)
 sessionsRouter.post('/', async (req, res) => {
     // Check for an existing user
-    const person = await Person.findOne({ email: req.body.email });
+    const foundUser = await Person.findOne({ email: req.body.email });
     // If no user found, send alert
     if (!foundUser) {
         res.send(`Oops! No user with that email address has been registered.`);
