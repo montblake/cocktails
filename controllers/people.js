@@ -7,37 +7,59 @@ const Ingredient = require('../models/ingredient');
 const sessionsRouter = require('./sessions.js');
 const bcrypt = require('bcrypt');
 
+
 // ===============================
 // Define routes/controllers
 // ===============================
 // Index
 peopleRouter.get('/', async (req, res) => {
-    const people = await Person.find({});
-    res.render('people/index.ejs', { people, currentUser: req.session.currentUser });
+    try {
+        const people = await Person.find({});
+        res.render('people/index.ejs', { people, currentUser: req.session.currentUser });
+    } catch(error) {
+        console.log(error);
+    }   
 });
+
 
 // New (REGISTRATION PAGE)
 peopleRouter.get('/new', (req, res) => {
     res.render('people/new.ejs', { currentUser: req.session.currentUser });
 });
 
+
 // Delete ALL
 peopleRouter.delete('/', async (req, res) => {
-    const person = await Person.deleteMany({});
-    res.redirect('/people');
+    try {
+        const person = await Person.deleteMany({});
+        res.redirect('/people');  
+    } catch(error) {
+        console.log(error);
+    }  
 });
+
 
 // Delete
 peopleRouter.delete('/:id', async (req, res) => {
-    const person = await Person.findByIdAndRemove(req.params.id);
-    res.redirect('/people');
+    try {
+        const person = await Person.findByIdAndRemove(req.params.id);
+        res.redirect('/people');
+    } catch(error) {
+        console.log(error);
+    }   
 });
+
 
 // Update
 peopleRouter.put('/:id', async (req, res) => {
-    const person = await Person.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect('/people');
+    try {
+        const person = await Person.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect('/people');
+    } catch(error) {
+        console.log(error);
+    }
 });
+
 
 // Create (REGISTRATION ROUTE)
 peopleRouter.post('/', async (req, res) => {
@@ -63,8 +85,6 @@ peopleRouter.get('/:id/edit', async (req, res) => {
 });
 
 
-
-
 // Show
 peopleRouter.get('/:id', async (req, res) => {
     try {
@@ -76,5 +96,8 @@ peopleRouter.get('/:id', async (req, res) => {
     }
 });
 
-// Make ROuter available
+
+// ===============================================
+//                 MODULE EXPORT
+// ===============================================
 module.exports = peopleRouter;

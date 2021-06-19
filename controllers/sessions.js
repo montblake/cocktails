@@ -51,5 +51,7 @@ sessionsRouter.post('/', async (req, res) => {
 });
 
 
-// Export Sessions Router
+// ===============================================
+//                 MODULE EXPORT
+// ===============================================
 module.exports = sessionsRouter;
