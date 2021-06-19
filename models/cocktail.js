@@ -7,7 +7,7 @@ const cocktailSchema = new Schema({
     name: { type: String, required: true },
     createdBy: {
         type: Schema.Types.ObjectId,
-        ref: 'Creator'
+        ref: 'Person'
     },
     description: String,
     method: String,

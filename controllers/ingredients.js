@@ -1,33 +1,33 @@
 // Dependencies
 const express = require('express');
-const router = express.Router();
+const ingredientsRouter = express.Router();
 const Ingredient = require('../models/ingredient');
 const Cocktail = require('../models/cocktail');
 
 
 // ===============================
-// Define routes/controllers
+//          Routes
 // ===============================
 // Index
-router.get('/', (req, res) => {
+ingredientsRouter.get('/', (req, res) => {
     Ingredient.find({}, (error, ingredients) => {
         res.render('ingredients/index.ejs', { ingredients, currentUser: req.session.currentUser });
     });
 });
 
 // New
-router.get('/new', (req, res) => {
+ingredientsRouter.get('/new', (req, res) => {
     res.render('ingredients/new.ejs', { currentUser: req.session.currentUser });
 });
 
 // Delete ALL
-router.delete('/', (req, res) => {
+ingredientsRouter.delete('/', (req, res) => {
     Ingredient.deleteMany({}, (error, allIngredients) => {});
     res.redirect('/ingredients');
 });
 
 // Delete
-router.delete('/:id', (req, res) => {
+ingredientsRouter.delete('/:id', (req, res) => {
     Ingredient.findByIdAndRemove(req.params.id, () => {
         res.redirect('/ingredients');
     });
@@ -35,7 +35,7 @@ router.delete('/:id', (req, res) => {
 
 
 // Update
-router.put('/:id', (req, res) => {
+ingredientsRouter.put('/:id', (req, res) => {
     Ingredient.findByIdAndUpdate(req.params.id, req.body, () => {
         res.redirect('/ingredients');
     });
@@ -43,7 +43,7 @@ router.put('/:id', (req, res) => {
 
 
 // Create
-router.post('/', (req, res) => {
+ingredientsRouter.post('/', (req, res) => {
     Ingredient.create(req.body, (error, ingredient) => {
         res.redirect('/ingredients');
     });
@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 
 
 // Edit
-router.get('/:id/edit', (req, res) => {
+ingredientsRouter.get('/:id/edit', (req, res) => {
     Ingredient.findById(req.params.id, (error, ingredient) => {
         res.render('ingredients/edit.ejs', { ingredient, currentUser: req.session.currentUser });
     });
@@ -59,7 +59,7 @@ router.get('/:id/edit', (req, res) => {
 
 
 // Show
-router.get('/:id', async (req, res) => {
+ingredientsRouter.get('/:id', async (req, res) => {
     try {
         const ingredient = await Ingredient.findById(req.params.id).populate( 'createdBy' );
         const cocktails = await Cocktail.find({ 'recipe.ingredient': ingredient._id });
@@ -69,5 +69,5 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-
-module.exports = router;
+// Make Router Available
+module.exports = ingredientsRouter;

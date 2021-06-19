@@ -5,11 +5,11 @@ On the simplest level, this app allows a user to explore a cocktail recipe datab
 In addition to the core properties of cocktails and creators, the database should facilitate the exploration of lineage/geneology. What recipe a cocktail is a variation on, and what recipes have evolved from that cocktail.
 
 ## Data Modeling
-The database utilizes two data models in relationship: a Cocktail model and a Creator model. Eventually, the Cocktail might want to be connected to an Ingredient model as well. 
+The database utilizes two data models in relationship: a Cocktail model and a Person model. Eventually, the Cocktail might want to be connected to an Ingredient model as well. 
 ![Entity Relationship Diagram](https://i.imgur.com/kAOKqTg.png)
 
 ## Authentication and Authorization
-Also, the app doesn't truly make sense until an authentication and authorization process can be added. It works as a read only database for guests while registered users can create, edit, and delete their cocktails. Registered Users should also be able to fork any cocktail, either their own or someone else's. Administrators should be able to perform any data operation on any asset. Once this authorization aspect is added, other features suggest themselves: the ability to keep cocktails public or private, to add a dashboard for creators to view/edit their own body of work.
+Also, the app doesn't truly make sense until an authentication and authorization process can be added. It works as a read only database for guests while registered users can create, edit, and delete their cocktails. Registered Users should also be able to fork any cocktail, either their own or someone else's. Administrators should be able to perform any data operation on any asset. Once this authorization aspect is added, other features suggest themselves: the ability to keep cocktails public or private, to add a dashboard for users to view/edit their own body of work.
 
 ## Challenges
 The current challenge in development is keeping site of the features that make this a UNIQUE app and not adding complexity that isn't essential. Also, trying to create controls for standardizing entry of ingredients has added a layer of complexity that isn't yet clearly achievable. 

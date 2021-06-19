@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define Schema
-const creatorSchema = new Schema({
+const personSchema = new Schema({
     name: {type: String, required: true },
     email: {type: String, required: true },
     password: {type: String, required: true }, 
@@ -13,7 +13,7 @@ const creatorSchema = new Schema({
 
 
 //  Turn Schema into a Model
-const Creator = mongoose.model('Creator', creatorSchema);
+const Person = mongoose.model('Person', personSchema);
 
 // Make Model Available
-module.exports = Creator;
+module.exports = Person;

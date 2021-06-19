@@ -16,13 +16,13 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <h3>Edit Creator</h3>
-        <form action="/creators/<%= creator._id %>?_method=PUT" method="POST">
+        <h3>Edit Person</h3>
+        <form action="/people/<%= person._id %>?_method=PUT" method="POST">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="<%= creator.name %>"/>
+            <input type="text" name="name" id="name" value="<%= person.name %>"/>
             <label for="about">About</label>
-            <textarea name="about" id="about" ><%= creator.about %></textarea>
-            <input type="submit" value="Update Creator" />
+            <textarea name="about" id="about" ><%= person.about %></textarea>
+            <input type="submit" value="Update Person" />
         </form>
 
     </main>

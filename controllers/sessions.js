@@ -3,8 +3,7 @@ const express = require('express');
 // Require bcrypt for encrypting password
 const bcrypt = require('bcrypt');
 const sessionsRouter = express.Router();
-// CREATOR model (called People in Headings/Text) will be USER model
-const Creator = require('../models/creator');
+const Person = require('../models/person');
 
 
 // =========================================================
@@ -30,7 +29,7 @@ sessionsRouter.delete('/', (req, res) => {
 // Create (login route)
 sessionsRouter.post('/', (req, res) => {
     // Check for an existing user
-    Creator.findOne({
+    Person.findOne({
         email: req.body.email
     }, (error, foundUser) => {
         // If no user found, send alert
@@ -47,7 +46,7 @@ sessionsRouter.post('/', (req, res) => {
                 // Add user to session
                 req.session.currentUser = foundUser;
                 // Redirect user to their personal dashboard
-                res.redirect(`/creators/${currentId}`);
+                res.redirect(`/people/${currentId}`);
             } else {
                 // Otherwise, inform them passwords don't match
                 // TODO: develop feature to allow multiple attempts gracefully

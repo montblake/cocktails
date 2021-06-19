@@ -35,8 +35,8 @@ app.use(
 
 
 // Controllers
-const creatorsController = require('./controllers/creators');
-app.use('/creators', creatorsController);
+const peopleController = require('./controllers/people');
+app.use('/people', peopleController);
 const cocktailsController = require('./controllers/cocktails');
 app.use('/cocktails', cocktailsController);
 const ingredientsController = require('./controllers/ingredients');
@@ -49,7 +49,7 @@ app.use('/sessions', sessionsController);
 app.get('/', (req, res) => {
     // If user is logged in, redirect to user's creatpr page
     if (req.session.currentUser) {
-        res.redirect(`/creators/${req.session.currentUser._id}`);
+        res.redirect(`/people/${req.session.currentUser._id}`);
     } else {
         // If user is a guest, allow them to search databases and read data
         res.render('index.ejs', {

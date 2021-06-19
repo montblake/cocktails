@@ -17,9 +17,9 @@
     <main>
         <h2>People Index</h2>
         <ul class="index people people-bg">
-            <% creators.forEach(function(creator){ %>
+            <% people.forEach(function(person){ %>
                 <li>
-                    <a class="text-light" href="creators/<%=creator._id%>"><%=creator.name%></a>
+                    <a class="text-light" href="people/<%=person._id%>"><%=person.name%></a>
                 </li>
             <% }); %>
         </ul>

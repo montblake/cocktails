@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const ingredientSchema = new Schema({
     name: { type: String, required: true },
     notes: String,
-    createdBy: { type: Schema.Types.ObjectId, ref: 'Creator' }
+    createdBy: { type: Schema.Types.ObjectId, ref: 'Person' }
 }, { timestamps: true });
 
 // Turn Schema into Model, save to Variable
