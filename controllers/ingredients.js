@@ -9,52 +9,73 @@ const Cocktail = require('../models/cocktail');
 //          Routes
 // ===============================
 // Index
-ingredientsRouter.get('/', (req, res) => {
-    Ingredient.find({}, (error, ingredients) => {
+ingredientsRouter.get('/', async (req, res) => {
+    try {
+        const ingredients = await Ingredient.find({});
         res.render('ingredients/index.ejs', { ingredients, currentUser: req.session.currentUser });
-    });
+    } catch(error) {
+        console.log(error);
+    }
 });
+
 
 // New
 ingredientsRouter.get('/new', (req, res) => {
     res.render('ingredients/new.ejs', { currentUser: req.session.currentUser });
 });
 
+
 // Delete ALL
-ingredientsRouter.delete('/', (req, res) => {
-    Ingredient.deleteMany({}, (error, allIngredients) => {});
-    res.redirect('/ingredients');
+ingredientsRouter.delete('/', async (req, res) => {
+    try {
+        const ingredient = await Ingredient.deleteMany({});
+        res.redirect('/ingredients');
+    } catch(error) {
+        console.log(error);
+    } 
 });
 
 // Delete
-ingredientsRouter.delete('/:id', (req, res) => {
-    Ingredient.findByIdAndRemove(req.params.id, () => {
+ingredientsRouter.delete('/:id', async (req, res) => {
+    try {
+        const ingredient = await Ingredient.findByIdAndRemove(req.params.id);
         res.redirect('/ingredients');
-    });
+    } catch(error) {
+        console.log(error);
+    }  
 });
 
 
 // Update
-ingredientsRouter.put('/:id', (req, res) => {
-    Ingredient.findByIdAndUpdate(req.params.id, req.body, () => {
+ingredientsRouter.put('/:id', async (req, res) => {
+    try {
+        const ingredient = await Ingredient.findByIdAndUpdate(req.params.id, req.body);
         res.redirect('/ingredients');
-    });
+    } catch(error) {
+        console.log(error); 
+    }
 });
 
 
 // Create
-ingredientsRouter.post('/', (req, res) => {
-    Ingredient.create(req.body, (error, ingredient) => {
+ingredientsRouter.post('/', async (req, res) => {
+    try {
+        const ingredient = await Ingredient.create(req.body);
         res.redirect('/ingredients');
-    });
+    } catch(error) {
+        console.log(error);
+    }
 });
 
 
 // Edit
-ingredientsRouter.get('/:id/edit', (req, res) => {
-    Ingredient.findById(req.params.id, (error, ingredient) => {
+ingredientsRouter.get('/:id/edit', async (req, res) => {
+    try {
+        const ingredient = await Ingredient.findById(req.params.id);
         res.render('ingredients/edit.ejs', { ingredient, currentUser: req.session.currentUser });
-    });
+    } catch(error) {
+        console.log(error);
+    }
 });
 
 
@@ -68,6 +89,8 @@ ingredientsRouter.get('/:id', async (req, res) => {
         console.log(error);
     }
 });
+
+
 
 // Make Router Available
 module.exports = ingredientsRouter;
