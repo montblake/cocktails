@@ -1,6 +1,8 @@
 <nav class="topNav">
 	<ul id="sessions-nav">
+		
 		<% if(currentUser) { %>
+			<!-- If user is logged in, nav options: their USERS HOME page and LOG OUT -->
 			<li><a class="users" href="/">Home</a></li>		
 			<li>
 				<form action="/sessions?_method=DELETE" method="POST">
@@ -8,24 +10,28 @@
 				</form>
 			</li>
 		<% } else { %>
+			<!-- If user is NOT LOGGED IN, then offer options to REGISTER or LOGIN -->
 			<li><a class="users" href="/creators/new">Register</a></li>
 			<li><a class="users" href="/sessions/new">Login</a></li>
 		<% } %>
 	</ul>
 	<ul id="db-nav">
 		<li>
+			<!-- LINK TO COCKTAIL INDEX -->
 			<a class="cocktails" href="/cocktails">Cocktails</a>
 		</li>
 		<li class="plus">
 			+
 		</li>
 		<li>
+			<!-- LINK TO INGREDIENT INDEX -->
 			<a class="ingredients" href="/ingredients">Ingredients</a>
 		</li>
 		<li class="plus">
 			+
 		</li>
 		<li>
+			<!-- LINK TO PEOPLE INDEX -->
 			<a class="people" href="/creators">People</a>
 		</li>
 	</ul>
