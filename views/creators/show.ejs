@@ -12,39 +12,50 @@
 </head>
 
 <body>
+
     <header>
         <%- include('../partials/header.ejs') %>
     </header>
+
     <main>
-    <% if (currentUser) { %>
-        <% if (currentUser._id == creator._id){ %>
-        <h2>Dashboard</h2>
+        <!-- IF USER IS LOGGED IN... IF THIS IS THEIR PAGE, CALL IT DASHBOARD -->
+        <% if (currentUser) { %>
+            <% if (currentUser._id == creator._id){ %>
+            <h2>Dashboard</h2>
+            <% } %>
+        <% } else { %>
+            <h2>Person Page</h2>
         <% } %>
-    <% } else { %>
-        <h2>Person</h2>
-    <% } %>
+
         <form class="show-form people-bg" action="/creators/<%=creator._id%>?_method=DELETE" method="POST">
+            <!-- STORED PERSON DATA -->
             <h4>Name</h4>
             <p><%= creator.name %></p>
             <h4>About</h4>
             <p><%= creator.about %></p>
             <h4>Date Joined</h4>
             <p><%= new Date(creator.createdAt).toLocaleDateString() %></p>
+
+            <!-- IF USER HAS CREATED COCKTAILS, LIST THEM -->
             <% if (cocktails.length) { %>
                 <h4>Cocktails</h4>
-            <ul class="index">
-                <% cocktails.forEach(cocktail => { %>
-                    <li><a href="/cocktails/<%=cocktail._id%>"><%=cocktail.name%></a></li>
-                <% }) %>
-            </ul>
+                <ul class="index">
+                    <% cocktails.forEach(cocktail => { %>
+                        <li><a href="/cocktails/<%=cocktail._id%>"><%=cocktail.name%></a></li>
+                    <% }) %>
+                </ul>
             <% } %>
+
+            <!-- IF USER IS LOGGED IN... IF THIS IS THEIR PAGE, GIVE THEM ACCESS TO CREATION CONTROLs -->
             <% if (currentUser) { %>
                 <% if (currentUser._id == creator._id){ %>
-                <a class="actions" href="/creators/<%=creator._id%>/edit">Edit Information</a>
-                <input type="submit" value="Delete Account" />
-                <% } %>
+                
                 <a class="actions" href="/cocktails/new">Add New Cocktail</a>
                 <a class="actions" href="/ingredients/new">Add New Ingredient</a>
+
+                <a class="actions" href="/creators/<%=creator._id%>/edit">Edit User Information</a>
+                <input type="submit" value="Delete Account" />
+                <% } %>
             <% } %>
             
         </form>  
