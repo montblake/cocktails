@@ -1,8 +1,15 @@
+// Dependencies
 const express = require('express');
+// Require bcrypt for encrypting password
 const bcrypt = require('bcrypt');
 const sessionsRouter = express.Router();
+// CREATOR model (called People in Headings/Text) will be USER model
 const Creator = require('../models/creator');
 
+
+// =========================================================
+//                     ROUTES FOR SESSIONS ROUTER
+// =========================================================
 
 // New (login page)
 sessionsRouter.get('/new', (req, res) => {
@@ -10,7 +17,6 @@ sessionsRouter.get('/new', (req, res) => {
         currentUser: req.session.currentUser
     });
 });
-
 
 
 // Delete (logout route)
@@ -27,23 +33,24 @@ sessionsRouter.post('/', (req, res) => {
     Creator.findOne({
         email: req.body.email
     }, (error, foundUser) => {
-        // send error message if no user is found
+        // If no user found, send alert
         if (!foundUser) {
             res.send(`Oops! No user with that email address has been registered.`);
         } else {
-            // if a user has been found
-            // compare the given password with the hashed password we have stored
+            // If user has been found, 
+            // Check if password entered (when hashed) matched hashed pw in database
             const passwordMatches = bcrypt.compareSync(req.body.password, foundUser.password);
 
-            // if passwords match
+            // If passwords match:
             if (passwordMatches) {
                 const currentId = foundUser._id;
-                // add the user to our session
+                // Add user to session
                 req.session.currentUser = foundUser;
-                // redirect back to our home page
+                // Redirect user to their personal dashboard
                 res.redirect(`/creators/${currentId}`);
             } else {
-                // if the passwords don't match
+                // Otherwise, inform them passwords don't match
+                // TODO: develop feature to allow multiple attempts gracefully
                 res.send('Oops! Invalid credentials.');
             }
         }
