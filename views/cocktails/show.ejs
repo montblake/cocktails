@@ -19,12 +19,15 @@
     <main>
         <h2>Cocktail Page</h2>
         <form class="show-form cocktails-bg" action="/cocktails/<%=cocktail._id%>?_method=DELETE" method="POST">
+            <!-- STORED COCKTAIL DATA -->
             <h4>Name</h4>
             <p><%= cocktail.name %></p>
             <h4>Created By</h4>
             <p><%= cocktail.createdBy.name %></p>
             <h4>Description</h4>
             <p><%= cocktail.description %></p>
+
+            <!-- DETAILED RECIPE/INGREDIENT SECTION -->
             <h4>Ingredients</h4>
             <ul id="show-ingredients">
                 <% for (let i = 0; i < cocktail.recipe.length; i++) { %>
@@ -32,20 +35,27 @@
                 <% } %>
             </ul>
           
+
             <h4>Method</h4>
             <p><%= cocktail.method %></p>
             <h4>Glass</h4>
             <p><%= cocktail.glass %></p>
             <h4>Garnish</h4>
             <p><%= cocktail.garnish %></p>
-            <h4>Notes on Preparation</h4>
-            <p><%= cocktail.notes %></p>
+
+            <!-- ONLY SHOW PREPARATION NOTES SECTION IF NOTES NOT EMPTY -->
+            <% if (cocktail.notes !== ""){ %>
+                <h4>Notes on Preparation</h4>
+                <p><%= cocktail.notes %></p>
+            <% } %>
             
+            <!-- ONLY SHOW COCKTAIL.PARENT IF COCKTAIL HAS PARENT -->
             <% if (cocktail.parent) { %>
                 <h4>Forked FROM</h4>
                 <p><a href="<%=cocktail.parent._id%>"><%=cocktail.parent.name%></a></p>
             <% } %>
             
+            <!-- ONLY SHOW COCKTAIL.CHILDREN IF COCKTAIL HAS CHILDREN -->
             <% if (children.length) { %>
                 <h4>Forked BY</h4>
                 <ul id="show-children">
@@ -54,14 +64,17 @@
                     <% }) %>
                 </ul>
             <% } %>
-        <% if (currentUser) { %>    
-        <% if (currentUser._id == cocktail.createdBy._id){ %>                     
-            <a id="cocktail-edit"class="actions" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
-            <input type="submit" value="Delete Cocktail" id="cocktail-delete"/>
-        <% } %>
-        
-            <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/fork">Fork Cocktail</a>
-       <% } %>
+
+
+            <!-- IF USER IS LOGGED IN, AUTOMATICALLY ALLOW FORK. CHECK IF USER CREATED THIS COCKTAIL, IF TRUE: SHOW CONTROLS FOR EDIT/DELETE AS WELL -->   
+            <% if (currentUser) { %>    
+                <% if (currentUser._id == cocktail.createdBy._id){ %>                     
+                    <a id="cocktail-edit"class="actions" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
+                    <input type="submit" value="Delete Cocktail" id="cocktail-delete"/>
+                <% } %>
+            
+                <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/fork">Fork Cocktail</a>
+             <% } %>
 
         </form>
     </main>
