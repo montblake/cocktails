@@ -44,10 +44,14 @@ app.use('/ingredients', ingredientsController);
 const sessionsController = require('./controllers/sessions');
 app.use('/sessions', sessionsController);
 
+
+// ROOT ROUTE
 app.get('/', (req, res) => {
+    // If user is logged in, redirect to user's creatpr page
     if (req.session.currentUser) {
         res.redirect(`/creators/${req.session.currentUser._id}`);
     } else {
+        // If user is a guest, allow them to search databases and read data
         res.render('index.ejs', {
             currentUser: req.session.currentUser
         });
