@@ -10,23 +10,27 @@
     <title>Forking Cocktails</title>
 </head>
 <body>
+
     <header>
         <%- include('../partials/header.ejs') %>
     </header>
+
     <main>
         <h2>Ingredient Page</h2>
-        <form class="show-form ingredients-bg"action="/ingredients/<%=ingredient._id%>?_method=DELETE" method="POST">
+        <form class="show-form ingredients-bg" action="/ingredients/<%=ingredient._id%>?_method=DELETE" method="POST">
+           <!-- STORED INGREDIENT DATA -->
             <h4>Name</h4>
             <p><%= ingredient.name %></p>
             <h4>Created By</h4>
             <p><%= ingredient.createdBy.name %></p>
-            
+
+            <!-- ONLY SHOW INGREDIENT NOTES SECTION IF NOTES NOT EMPTY -->
             <% if (ingredient.notes !== ""){ %>
                 <h4>Notes</h4>
                 <p><%= ingredient.notes %></p>
             <% } %>
             
-
+            <!-- ONLY SHOW COCKTAILS SECTION IF COCKTAILS WITH THIS INGREDIENT EXIST -->
             <% if (cocktails.length) { %>
                 <h4>Cocktails</h4>
                 <ul class="index">
@@ -34,16 +38,18 @@
                         <li><a href="/cocktails/<%=cocktail._id%>"><%=cocktail.name%></a></li>
                     <% }) %>
                 </ul>
-                <% } %>
+            <% } %>
 
+            <!-- IF USER IS LOGGED IN, CHECK IF USER CREATED THIS INGREDIENT, IF TRUE: SHOW CONTROLS FOR EDIT/DELETE -->
             <% if (currentUser) { %>
                 <% if (ingredient.createdBy._id == currentUser._id) { %>
                     <a class="actions ingredient-action" href="/ingredients/<%=ingredient._id%>/edit">Edit Ingredient</a>
-                <input id="ingredient-delete" type="submit" value="Delete Ingredient" />
-               <% } %>
+                    <input id="ingredient-delete" type="submit" value="Delete Ingredient" />
+                <% } %>
             <% } %>
             
         </form>
     </main>
+
 </body>
 </html>
