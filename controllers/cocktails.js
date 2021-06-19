@@ -4,41 +4,58 @@ const Cocktail = require('../models/cocktail');
 const Person = require('../models/person');
 const Ingredient = require('../models/ingredient');
 
+
 // ================================
 //              ROUTES
 // ================================
 
 // Index
-cocktailsRouter.get('/', (req, res) => {   
-    Cocktail.find({}, (error, cocktails) => {
-        res.render('cocktails/index.ejs', { cocktails, currentUser: req.session.currentUser });
-    }); 
+cocktailsRouter.get('/', async (req, res) => {   
+    try {
+        const cocktails = await Cocktail.find({});
+        res.render('cocktails/index.ejs', { cocktails, currentUser: req.session.currentUser }); 
+    } catch(error) {
+        console.log(error);
+    }
 });
+
 
 // New
 cocktailsRouter.get('/new', async (req, res) => {
-    const person = await Person.find({ _id: req.session.currentUser._id });
-    const ingredients = await Ingredient.find({});
-    res.render('cocktails/new.ejs', { person, ingredients, currentUser: req.session.currentUser });
+    try {
+        const person = await Person.find({ _id: req.session.currentUser._id });
+        const ingredients = await Ingredient.find({});
+        res.render('cocktails/new.ejs', { person, ingredients, currentUser: req.session.currentUser });
+    } catch(error) {
+        console.log(error);
+    }
 });
 
 
 // Delete ALL
-cocktailsRouter.delete('/', (req, res) => {
-    Cocktail.deleteMany({}, (error, allCocktails) => {});
-    res.redirect('/cocktails');
-});
+cocktailsRouter.delete('/', async (req, res) => {
+    try {
+        const cocktail = await Cocktail.deleteMany({});
+        res.redirect('/cocktails');
+    } catch(error) {
+        console.log(error);
+    }
+}); 
 
 
 // Delete
-cocktailsRouter.delete('/:id', (req, res) => {
-    Cocktail.findByIdAndDelete(req.params.id, (error, deletedCocktail) => {
+cocktailsRouter.delete('/:id', async (req, res) => {
+    try {
+        const cocktail = await Cocktail.findByIdAndDelete(req.params.id);
         res.redirect('/cocktails');
-    });
+    } catch(error) {
+        console.log(error);
+    }
 });
 
+
 // Update
-cocktailsRouter.put('/:id', (req, res) => {
+cocktailsRouter.put('/:id', async (req, res) => {
     let num_lines = req.body.number.length;
     let recipe = [];
     for (let i = 0; i < num_lines; i++){
@@ -50,13 +67,17 @@ cocktailsRouter.put('/:id', (req, res) => {
         recipe.push(recipeLine);
     }
     req.body.recipe = recipe;
-    Cocktail.findByIdAndUpdate(req.params.id, req.body, (error, updatedCocktail) => {
+    try {
+        const cocktail = await Cocktail.findByIdAndUpdate(req.params.id, req.body);
         res.redirect('/cocktails');
-    });
+    } catch(error) {
+        console.log(error);
+    }
 });
 
+
 // Create
-cocktailsRouter.post('/', (req, res) => {
+cocktailsRouter.post('/', async (req, res) => {
     let num_lines = req.body.number.length;
     let recipe = [];
     for (let i = 0; i < num_lines; i++){
@@ -72,11 +93,13 @@ cocktailsRouter.post('/', (req, res) => {
         recipe.push(recipeLine);
     }
     req.body.recipe = recipe;
-    Cocktail.create(req.body, (error, createdCocktail) => {
+    try {
+        const cocktail = await Cocktail.create(req.body);
         res.redirect('/cocktails');
-    });
+    } catch(error) {
+        console.log(error);
+    }
 });
-
 
 
 // Create from FORK
@@ -106,17 +129,24 @@ cocktailsRouter.post('/fork', (req, res) => {
 
 // Edit
 cocktailsRouter.get('/:id/edit', async (req, res) => {
-    const ingredients = await Ingredient.find({});
-    const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
-    res.render('cocktails/edit.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
-
+    try {
+        const ingredients = await Ingredient.find({});
+        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
+        res.render('cocktails/edit.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
+    } catch(error) {
+        console.log(error);
+    }
 });
 
 // FORK
 cocktailsRouter.get('/:id/fork', async (req, res) => {
-    const ingredients = await Ingredient.find({});
-    const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
-    res.render('cocktails/fork.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
+    try {
+        const ingredients = await Ingredient.find({});
+        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
+        res.render('cocktails/fork.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
+    } catch(error) {
+        console.log(error);
+    }
 });
 
 
@@ -132,6 +162,7 @@ cocktailsRouter.get('/:id', async (req, res) => {
     }
 });
 
-
-// Export Module
+// ===============================================
+//                 MODULE EXPORT
+// ===============================================
 module.exports = cocktailsRouter;
