@@ -8,6 +8,19 @@ const Cocktail = require('../models/cocktail');
 // ===============================
 //          Routes
 // ===============================
+// Seed
+// const ingredientSeed = require('../models/ingredientSeed');
+
+// ingredientsRouter.get('/seed', (req, res) => {
+//     Ingredient.deleteMany({}, (error, allIngredients) => {});
+//     Ingredient.create(ingredientSeed, (error, data) => {
+//         res.redirect('/ingredients');
+//     });
+// });
+
+
+
+
 // Index
 ingredientsRouter.get('/', async (req, res) => {
     try {
