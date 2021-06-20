@@ -54,7 +54,7 @@ peopleRouter.delete('/:id', async (req, res) => {
 peopleRouter.put('/:id', async (req, res) => {
     try {
         const person = await Person.findByIdAndUpdate(req.params.id, req.body);
-        res.redirect('/people');
+        res.redirect(`/people/${req.params.id}`);
     } catch(error) {
         console.log(error);
     }

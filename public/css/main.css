@@ -8,8 +8,12 @@
   font-size: 10px;
 }
 
-* {
+html {
   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
   margin: 0;
 }
 
@@ -31,23 +35,15 @@ a:hover {
 body {
   padding: 40px;
   font-family: 'Mulish', sans-serif;
-  
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 header {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-}
-
-main {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
 }
 
 /* COLORS */
@@ -118,7 +114,7 @@ h4, h5, h6 {
 
 
 h1 {
-  font-size: 4.8rem;
+  font-size: 10rem;
   margin: 0.6rem 0 -.6rem 0;
 }
 
@@ -134,12 +130,11 @@ h3 {
 
 h4 {
   color: whitesmoke;
-  
+  font-size: 1.6rem;
 }
 
-
 p {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 
@@ -151,6 +146,7 @@ p {
   flex-direction: row-reverse;
   justify-content: space-between;
   width: 100%;
+  padding-bottom: 1rem;
   border-bottom: 1px solid black;
 }
 
@@ -180,14 +176,10 @@ p {
   padding: 0;
 }
 
-.plus {
-  font-size: 1.6rem;
-}
-
 
 /* MAIN STYLING */
 main > form > label {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: whitesmoke;
 }
 
@@ -196,23 +188,14 @@ main > form > select,
 main > form > textarea {
   margin-bottom: 1.6rem;
   color: black;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding: 1rem;
   width: 100%;
-  height: 4rem;
 }
 
 main > form > textarea {
   min-height: 8rem;
   resize: vertical;
-}
-
-main > form > input[type=submit] {
-  font-size: 1.6rem;
-  height: 3.6rem;
-  width: 160px;
-  border: none;
-  padding: 0;
 }
 
 /* INDEX PAGES STYLING */
@@ -234,7 +217,7 @@ main > form > input[type=submit] {
 /* SHOW-PAGES */
 .show-form {
   border: 1px solid black;
-  padding: 1rem 2rem;
+  padding: 2rem 3rem;
   margin-top: 1rem;
 }
 
@@ -276,12 +259,16 @@ main > form > input[type=submit] {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 1.6rem;
+  width: 100%;
 }
 
 #cocktail-details input {
   color: black;
-  padding: 10px 20px;
-  font-size: 1.4rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #cocktail-details label {
@@ -289,13 +276,20 @@ main > form > input[type=submit] {
   color: whitesmoke;
 }
 
-#cocktail-details section {
+#cocktail-details > section {
   display: flex;
   flex-direction: column;
+  width: 25%;
+  margin-right: 1rem;
 }
 
-.narrow {
-  margin-right: 1.6rem;
+#cocktail-details > section:last-of-type {
+  width: 50%;
+  margin-right: 0;
+}
+
+.narrow  {
+  width: 100%;
 }
 
 #cocktail-notes {
@@ -309,7 +303,9 @@ main > form > input[type=submit] {
 
 #recipeLine {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -336,70 +332,66 @@ main > form > input[type=submit] {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-
-
-
-
-
-
-/* STYLING FOR THE COCKTAILS DB */
-
-
-#recipe-actions {
   margin: .6rem 0 1.6rem 0;
 }
 
-#cocktail-recipe {
-  margin-bottom: 2.4rem;
-}
 
 
-
-/* STYLING FOR INGREDIENTS DB */
-.ingredient-action {
-  background: rgb(36, 143, 201);
-  color: whitesmoke;
-}
-
-#ingredient-delete {
-  background: rgb(36, 143, 201);
-  color: whitesmoke;
-}
+/* STYLING */
 
 .btn {
   padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
-  font-size: 1.4rem;
+  margin-right: 1rem;
+  font-size: 1.6rem;
+  border: none;
+  width: 25%;
 }
 
 .warning {
-  margin-left: auto;
-  margin-right: 0;
   background: red;
   border: none;
   color: whitesmoke;
+  margin-right: 0;
+  display: inline-block;
+  width: 25%;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .registered-options {
+  width: 100%;
   display: flex;
   margin: 2rem 0;
+  text-align: center;
 }
 
+.registered-options input {
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+#classification {
+  color: black;
+  height: 4.4rem;
+}
 
 /* RESPONSIVE STYLING */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 960px) {
   h1, h2 {
-    font-size: 3rem;
-  }
-
-  .index {
-     padding: 1rem 2rem;
+    font-size: 8rem;
   }
 }
+
+@media only screen and (max-width: 780px) {
+  h1, h2 {
+    font-size: 6rem;
+  }
+}
+
 
 @media only screen and (max-width: 600px) {
   body {
@@ -407,7 +399,7 @@ main > form > input[type=submit] {
   }
 
   h1, h2 {
-    font-size: 4rem;
+    font-size: 5rem;
   }
 
   .show-form {
@@ -425,9 +417,45 @@ main > form > input[type=submit] {
 
   #sessions-nav {
     flex-direction: column;
+    margin-bottom: 2rem;
   }
 
   #sessions-nav li {
     margin-left: 0;
+  }
+
+  .btn {
+    padding: 1rem;
+    width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {
+  h1, h2 {
+    font-size: 3.4rem;
+  }
+
+  .index {
+     padding: 1rem 2rem;
+  }
+
+  .btn {
+    font-size: 1.4rem;
+    padding: 1rem;
+  }
+
+  #cocktail-details {
+    flex-wrap: wrap;
+  }
+
+  #cocktail-details > section  {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  #cocktail-details > section:last-of-type {
+    width: 100%;
+
   }
 }

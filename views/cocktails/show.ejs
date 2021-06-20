@@ -69,12 +69,13 @@
             <!-- IF USER IS LOGGED IN, AUTOMATICALLY ALLOW FORK. CHECK IF USER CREATED THIS COCKTAIL, IF TRUE: SHOW CONTROLS FOR EDIT/DELETE AS WELL -->   
             <% if (currentUser) { %>    
                 <% if (currentUser._id == cocktail.createdBy._id){ %>                     
-                    <a id="cocktail-edit"class="actions" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
-                    <input type="submit" value="Delete Cocktail" id="cocktail-delete"/>
+                <section class="registered-options">
+                    <a id="cocktail-edit"class="btn people-bg text-light" href="/cocktails/<%=cocktail._id%>/edit">Edit Cocktail</a>
+                    <input class="btn people-bg text-light" type="submit" value="Delete Cocktail" id="cocktail-delete"/>
                 <% } %>
-            
-                <a id="cocktail-fork" class="actions" href="/cocktails/<%=cocktail._id%>/fork">Fork Cocktail</a>
-             <% } %>
+                    <a id="cocktail-fork" class="btn people-bg text-light" href="/cocktails/<%=cocktail._id%>/fork">Fork Cocktail</a>
+                </section>
+            <% } %>
 
         </form>
     </main>

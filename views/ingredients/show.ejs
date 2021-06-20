@@ -43,8 +43,10 @@
             <!-- IF USER IS LOGGED IN, CHECK IF USER CREATED THIS INGREDIENT, IF TRUE: SHOW CONTROLS FOR EDIT/DELETE -->
             <% if (currentUser) { %>
                 <% if (ingredient.createdBy._id == currentUser._id) { %>
-                    <a class="actions ingredient-action" href="/ingredients/<%=ingredient._id%>/edit">Edit Ingredient</a>
-                    <input id="ingredient-delete" type="submit" value="Delete Ingredient" />
+                    <section class="registered-options">
+                        <a class="btn cocktails-bg text-light" href="/ingredients/<%=ingredient._id%>/edit">Edit Ingredient</a>
+                        <input class="btn cocktails-bg text-light" id="ingredient-delete" type="submit" value="Delete Ingredient" />
+                    </section>
                 <% } %>
             <% } %>
             

@@ -14,8 +14,8 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <h3>Fork Cocktail</h3>
-        <form action="/cocktails/fork" method="POST">
+        <h2>Fork Cocktail</h2>
+        <form class="show-form cocktails-bg" action="/cocktails/fork" method="POST">
 
             <label for="name">Name</label>
             <input type="text" name="name" id="cocktail-name" value="<%=cocktail.name%>">
@@ -31,8 +31,8 @@
                 <header>
                     <label for="recipeLine">Ingredients</label>
                     <nav id="recipe-actions">
-                        <div id="addLine">add ingredient</div>
-                        <div id="loseLine">remove ingredient</div>
+                        <div class="btn people-bg text-light" id="addLine">add ingredient</div>
+                        <div class="btn people-bg text-light" id="loseLine">remove ingredient</div>
                     </nav>
                 </header>
                 <% for(let i = 0; i < cocktail.recipe.length; i++){ %>
@@ -41,7 +41,7 @@
                     <div id="recipe-number">
                         <label for="number">Number</label>
                         <select name="number" id="number">
-                            <% console.log(cocktail.recipe[i].number) %>
+                        
                             <% if (cocktail.recipe[i].number === ""){ %>
                                 <option value="" selected >0</option>
                             <% } else { %>
@@ -196,9 +196,9 @@
             </section>
 
             <fieldset id="cocktail-details">
-                <section class="narrow">
+                <section>
                     <label for="cocktail-method">Method</label>
-                    <input list="methods" name="method" id="cocktail-method" value="<%=cocktail.method%>">
+                    <input class="narrow" list="methods" name="method" id="cocktail-method" value="<%=cocktail.method%>">
                     <datalist id="methods">
                         <option value="Stirred">Stirred</option>
                         <option value="Shaken">Shaken</option>
@@ -206,9 +206,9 @@
                     </datalist>
                 </section>
                 
-                <section class="narrow">
+                <section>
                     <label for="cocktail-glass">Glass</label>
-                    <input list="glasses" name="glass" id="cocktail-glass" value="<%=cocktail.glass%>">
+                    <input class="narrow" list="glasses" name="glass" id="cocktail-glass" value="<%=cocktail.glass%>">
                     <datalist id="glasses">
                         <option value="Rocks">Rocks</option>
                         <option value="Double Rocks">Double Rocks</option>
@@ -225,9 +225,9 @@
                     </datalist>
                 </section>
               
-                <section class="wide">
+                <section>
                     <label for="garnish">Garnish</label>
-                    <input type="text" name="garnish" id="cocktail-garnish" value="<%=cocktail.garnish%>"/>
+                    <input class="wide" type="text" name="garnish" id="cocktail-garnish" value="<%=cocktail.garnish%>"/>
                 </section> 
             </fieldset>
 
@@ -237,8 +237,11 @@
             <h4>Forked FROM</h4>
             <p><%= cocktail.name %> by <%= cocktail.createdBy.name %></p>
             <input type="hidden" name="parent" id="parent" value="<%=cocktail._id%>" />
-
-            <input type="submit" value="Update Recipe" id="recipe-submit">
+            
+            <section class="registered-options">
+                <input class="btn people-bg text-light" type="submit" value="Update Recipe" id="recipe-submit">
+            </section>
+            
         </form> 
     </main>
          

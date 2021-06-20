@@ -14,8 +14,8 @@
         <%- include('../partials/header.ejs') %>
     </header>
     <main>
-        <h3>Edit Ingredient</h3>
-        <form action="/ingredients/<%=ingredient._id%>?_method=PUT" method="POST">
+        <h2>Edit Ingredient</h2>
+        <form class="show-form ingredients-bg" action="/ingredients/<%=ingredient._id%>?_method=PUT" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="<%=ingredient.name%>"/>
             <label for="notes">Notes</label>

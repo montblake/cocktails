@@ -52,9 +52,10 @@
                 <% if (currentUser._id == person._id){ %>
                 <section class="registered-options">
                     <a class="btn cocktails-bg text-light" href="/cocktails/new">Add New Cocktail</a>
-                    <a class="btn ingredients-bg text-light href="/ingredients/new">Add New Ingredient</a>
+                   
+                    <a class="btn ingredients-bg text-light" href="/ingredients/new">Add New Ingredient</a>
 
-                    <a class="btn people-bg text-light href="/people/<%=person._id%>/edit">Edit User Information</a>
+                    <a class="btn people-bg text-light" href="/people/<%=person._id%>/edit">Edit User Information</a>
                     <input class="btn warning" type="submit" value="Delete Account" />
                 </section>    
                     
