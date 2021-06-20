@@ -364,6 +364,8 @@ main > form > textarea {
 .registered-options {
   width: 100%;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin: 2rem 0;
   text-align: center;
 }
@@ -456,6 +458,15 @@ main > form > textarea {
 
   #cocktail-details > section:last-of-type {
     width: 100%;
-
   }
+
+  .registered-options {
+    flex-wrap: wrap;
+  }
+
+  .registered-options .btn {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
 }
