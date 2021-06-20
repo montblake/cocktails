@@ -147,16 +147,21 @@
                             <% } else { %>
                                 <option value="oz" >oz</option>
                             <% } %> 
-                            <% if (cocktail.recipe[i].unit === "dash"){ %>
-                                <option value="dash" selected >dash</option>
+                            <% if (cocktail.recipe[i].unit === "dash(es)"){ %>
+                                <option value="dash(es)" selected >dash(es)</option>
                             <% } else { %>
-                                <option value="dash" >dash</option>
+                                <option value="dash(es)" >dash(es)</option>
                             <% } %> 
                             <% if (cocktail.recipe[i].unit === "barspoon"){ %>
                                 <option value="barspoon" selected >barspoon</option>
                             <% } else { %>
                                 <option value="barspoon" >barspoon</option>
-                            <% } %> 
+                            <% } %>
+                            <% if (cocktail.recipe[i].unit === "drop(s)"){ %>
+                                <option value="drop(s)" selected >drop(s)</option>
+                            <% } else { %>
+                                <option value="drop(s)" >drop(s)</option>
+                            <% } %>  
                             <% if (cocktail.recipe[i].unit === "tsp"){ %>
                                 <option value="tsp" selected >tsp</option>
                             <% } else { %>
@@ -209,10 +214,8 @@
                     <input class="narrow" list="glasses" name="glass" id="cocktail-glass" value="<%=cocktail.glass%>">
                     <datalist id="glasses">
                         <option value="Rocks">Rocks</option>
-                        <option value="Double Rocks">Double Rocks</option>
                         <option value="Coupe">Coupe</option>
                         <option value="Cocktail">Cocktail</option>
-                        <option value="Martini">Martini</option>
                         <option value="Collins">Collins</option>
                         <option value="Highball">Highball</option>
                         <option value="Nick and Nora">Nick and Nora</option>
