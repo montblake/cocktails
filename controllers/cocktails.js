@@ -56,17 +56,23 @@ cocktailsRouter.delete('/:id', async (req, res) => {
 
 // Update
 cocktailsRouter.put('/:id', async (req, res) => {
+    // First, process req.body to update recipe
+    // Step one: determine how many recipes line are there
     let num_lines = req.body.number.length;
     let recipe = [];
     for (let i = 0; i < num_lines; i++){
         let recipeLine = {};
+        // extract values from arrays and place into a single recipeLine
         recipeLine.number = req.body.number[i];
         recipeLine.fraction = req.body.fraction[i];
         recipeLine.unit = req.body.unit[i];
         recipeLine.ingredient = req.body.ingredient[i];
+        // push recipeLines onto an array of lines (recipe)
         recipe.push(recipeLine);
     }
+    // add the completed recipe to req.body
     req.body.recipe = recipe;
+    // update the database
     try {
         const cocktail = await Cocktail.findByIdAndUpdate(req.params.id, req.body);
         res.redirect('/cocktails');
@@ -78,10 +84,13 @@ cocktailsRouter.put('/:id', async (req, res) => {
 
 // Create
 cocktailsRouter.post('/', async (req, res) => {
+    // First, process req.body to create recipe
+    // Step one: determine how many recipes line are there
     let num_lines = req.body.number.length;
     let recipe = [];
     for (let i = 0; i < num_lines; i++){
         let recipeLine = {};
+        // extract values from arrays and place into a single recipeLine
         if (req.body.number[i] === '0'){
             recipeLine.number = '';
         } else {
@@ -90,9 +99,12 @@ cocktailsRouter.post('/', async (req, res) => {
         recipeLine.fraction = req.body.fraction[i];
         recipeLine.unit = req.body.unit[i];
         recipeLine.ingredient = req.body.ingredient[i];
+        // push recipeLines onto an array of lines (recipe)
         recipe.push(recipeLine);
     }
+    // add the completed recipe to req.body
     req.body.recipe = recipe;
+    // create record in the database
     try {
         const cocktail = await Cocktail.create(req.body);
         res.redirect('/cocktails');
@@ -104,11 +116,14 @@ cocktailsRouter.post('/', async (req, res) => {
 
 // Create from FORK
 cocktailsRouter.post('/fork', (req, res) => {
+    // First, process req.body to create recipe
+    // Step one: determine how many recipes line are there
     let num_lines = req.body.number.length;
     let recipe = [];
- 
     for (let i = 0; i < num_lines; i++){
         let recipeLine = {};
+        // extract values from arrays and place into a single recipeLine
+
         if (req.body.number[i] === '0'){
             recipeLine.number = '';
         } else {
@@ -117,10 +132,12 @@ cocktailsRouter.post('/fork', (req, res) => {
         recipeLine.fraction = req.body.fraction[i];
         recipeLine.unit = req.body.unit[i];
         recipeLine.ingredient = req.body.ingredient[i];
+        // push recipeLines onto an array of lines (recipe)
         recipe.push(recipeLine);
     }
-    
+    // add the completed recipe to req.body
     req.body.recipe = recipe;
+    // create record in the database
     Cocktail.create(req.body, (error, createdCocktail) => {
         res.redirect('/cocktails');
     });
@@ -137,6 +154,7 @@ cocktailsRouter.get('/:id/edit', async (req, res) => {
         console.log(error);
     }
 });
+
 
 // FORK
 cocktailsRouter.get('/:id/fork', async (req, res) => {
