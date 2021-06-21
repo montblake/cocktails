@@ -248,6 +248,7 @@ main > form > textarea {
 
 #show-children li {
   margin-right: 2rem;
+  font-size: 1.6rem;
 }
 
 
@@ -337,11 +338,12 @@ main > form > textarea {
 
 
 
-/* STYLING */
+/* Home Page */
 .landing {
-  background: rgba(0,0,0,.25);
+  background: rgba(0,0,0,1);
   font-size: 1.6rem;
-  padding: .5rem 4rem;
+  padding: .8rem 4rem;
+  color: whitesmoke;
 }
 
 .landing:first-of-type {
@@ -353,6 +355,15 @@ main > form > textarea {
   padding-bottom: 4rem;
 }
 
+
+.users {
+  font-weight: bold;
+  color: #999;
+}
+
+
+
+/* STYLING */
 .btn {
   padding: 1rem 2rem;
   display: flex;
