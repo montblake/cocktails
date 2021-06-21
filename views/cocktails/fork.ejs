@@ -17,17 +17,22 @@
         <h2>Fork Cocktail</h2>
         <form class="show-form cocktails-bg" action="/cocktails/fork" method="POST">
 
+            <!-- Name -->
             <label for="name">Name</label>
             <input type="text" name="name" id="cocktail-name" value="<%=cocktail.name%>">
             
+            <!-- Created By -->
             <label for="createdBy">Created By</label>
             <input type="hidden" name="createdBy" value="<%=currentUser._id%>">
             <input type="text" id="createdBy" value="<%=currentUser.name%>">
 
+            <!-- Description -->
             <label for="cocktail-description">Description</label>
             <textarea type="text" name="description" id="cocktail-description"><%=cocktail.description%></textarea>
 
+            <!-- Extended Recipe Section -->
             <section id="cocktail-recipe">
+                <!-- Label and Buttons to add/cut recipe lines -->
                 <header>
                     <label for="recipeLine">Ingredients</label>
                     <nav id="recipe-actions">
@@ -35,13 +40,15 @@
                         <div class="btn people-bg text-light" id="loseLine">remove ingredient</div>
                     </nav>
                 </header>
-                <% for(let i = 0; i < cocktail.recipe.length; i++){ %>
 
+                <!-- Repeat the fieldset for every line in recipe -->
+                <% for(let i = 0; i < cocktail.recipe.length; i++){ %>
                 <fieldset id="recipeLine" name="recipeLine">
+                    <!-- Whole Number for Measurement -->
                     <div id="recipe-number">
                         <label for="number">Number</label>
                         <select name="number" id="number">
-                        
+                            <!-- There must be a cleaner way to pre-select the proper value -->
                             <% if (cocktail.recipe[i].number === ""){ %>
                                 <option value="" selected >0</option>
                             <% } else { %>
@@ -92,12 +99,14 @@
                             <% } else { %>
                                 <option value="9" >9</option>
                             <% } %>
-                            
                         </select>
                     </div>
+
+                    <!-- Fraction for measuring ingredient -->
                     <div id="recipe-fraction">
                         <label for="fraction">Fraction</label>
                         <select name="fraction" id="fraction">
+                            <!-- Must be a more elegant way of achieving selection -->
                             <% if (cocktail.recipe[i].fraction === ""){ %>
                                 <option value="" selected>0</option>
                             <% } else { %>     
@@ -140,6 +149,8 @@
                             <% } %>   
                         </select>
                     </div>
+
+                    <!-- Unit of Measurement -->
                     <div id="recipe-unit">
                         <label for="unit">Unit</label>
                         <select name="unit" id="unit" value="<%=cocktail.recipe[i].unit%>">
@@ -181,6 +192,7 @@
                         </select>
                     </div>
                     
+                    <!-- Finally, the ingredient being measured -->
                     <div id="recipe-ingredient">
                         <label for="ingredient">Ingredient</label>
                         <select name=ingredient id="ingredient">
@@ -195,13 +207,16 @@
                             <% }) %>
                         </select>
                     </div>
-    
+                
+                <!-- The whole fieldset to this point is repeated for every line in the recipe -->
                 </fieldset>
                 <% } %>
             </section>
 
+            <!-- These three details stick together -->
             <fieldset id="cocktail-details">
                 <section>
+                    <!-- Mixing Method -->
                     <label for="cocktail-method">Method</label>
                     <input class="narrow" list="methods" name="method" id="cocktail-method" value="<%=cocktail.method%>">
                     <datalist id="methods">
@@ -212,6 +227,7 @@
                 </section>
                 
                 <section>
+                    <!-- Type of Glass -->
                     <label for="cocktail-glass">Glass</label>
                     <input class="narrow" list="glasses" name="glass" id="cocktail-glass" value="<%=cocktail.glass%>">
                     <datalist id="glasses">
@@ -230,18 +246,22 @@
                 </section>
               
                 <section>
+                    <!-- Type of Garnish -->
                     <label for="garnish">Garnish</label>
                     <input class="wide" type="text" name="garnish" id="cocktail-garnish" value="<%=cocktail.garnish%>"/>
                 </section> 
             </fieldset>
 
+            <!-- Notes -->
             <label for="cocktail-notes">Notes on Preparation</label>
             <textarea id="cocktail-notes" name="notes"><%=cocktail.notes%></textarea>
             
+            <!-- Forked From (this is the parent cocktail) -->
             <h4>Forked FROM</h4>
             <p><%= cocktail.name %> by <%= cocktail.createdBy.name %></p>
             <input type="hidden" name="parent" id="parent" value="<%=cocktail._id%>" />
             
+            <!-- Button to submit forked recipe -->
             <section class="registered-options">
                 <input class="btn people-bg text-light" type="submit" value="Submit Recipe" id="recipe-submit">
             </section>
@@ -250,16 +270,18 @@
     </main>
          
     <script>
-        const $recipe = $('#cocktail-recipe');
+        // Cached Element References
         const $recipeLine = $('#recipeLine');
         const $cocktailRecipe = $('#cocktail-recipe');
-
         const $addLineBtn = $('#addLine'); 
         const $loseLineBtn = $('#loseLine');
 
+        // Event Listeners
         $addLineBtn.on('click', handleAddLine);
         $loseLineBtn.on('click', handleLoseLine);
         
+
+        // Event Handling Functions
         function handleAddLine() {
             $cocktailRecipe.append($recipeLine.clone());
         }
@@ -267,7 +289,6 @@
         function handleLoseLine() {
             $cocktailRecipe.children().last().remove();
         }
-
     </script>   
 
 </body>
