@@ -198,6 +198,29 @@ main > form > textarea {
   resize: vertical;
 }
 
+
+/* Home Page */
+.landing {
+  background: rgba(0,0,0,.1);
+  font-size: 1.6rem;
+  padding: .8rem 4rem;
+  color: #333;
+}
+
+.landing:first-of-type {
+  margin-top: 2rem;
+  padding-top: 4rem;
+}
+
+.landing:last-of-type {
+  padding-bottom: 4rem;
+}
+
+.landing a {
+  font-weight: bold;
+}
+
+
 /* INDEX PAGES STYLING */
 .index {
   padding: 2rem 3rem;
@@ -252,7 +275,7 @@ main > form > textarea {
 }
 
 
-/* COMPlICATED COCKTAIL FORM DETAILS */
+/* COCKTAIL: NEW STYLING and LAYOUT */
 #cocktail-details {
   border: none;
   padding: 0;
@@ -337,33 +360,8 @@ main > form > textarea {
 }
 
 
-
-/* Home Page */
-.landing {
-  background: rgba(0,0,0,1);
-  font-size: 1.6rem;
-  padding: .8rem 4rem;
-  color: whitesmoke;
-}
-
-.landing:first-of-type {
-  margin-top: 2rem;
-  padding-top: 4rem;
-}
-
-.landing:last-of-type {
-  padding-bottom: 4rem;
-}
-
-
-.users {
-  font-weight: bold;
-  color: #999;
-}
-
-
-
-/* STYLING */
+/* STYLING FOR BUTTONS */
+/* AND CONTROLS FOR LOGGED IN USERS */
 .btn {
   padding: 1rem 2rem;
   display: flex;
@@ -405,6 +403,7 @@ main > form > textarea {
   color: black;
   height: 4.4rem;
 }
+
 
 /* RESPONSIVE STYLING */
 @media only screen and (max-width: 960px) {
@@ -493,5 +492,4 @@ main > form > textarea {
     margin-right: 0;
     margin-bottom: 1rem;
   }
-
 }
