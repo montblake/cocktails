@@ -19,12 +19,11 @@ const Cocktail = require('../models/cocktail');
 // });
 
 
-
-
 // Index
 ingredientsRouter.get('/', async (req, res) => {
     try {
-        const ingredients = await Ingredient.find({});
+        // Returns ingredients alphabetically
+        const ingredients = await Ingredient.find({classification: "Spirit"}).sort({ name: 1});
         res.render('ingredients/index.ejs', { ingredients, currentUser: req.session.currentUser });
     } catch(error) {
         console.log(error);

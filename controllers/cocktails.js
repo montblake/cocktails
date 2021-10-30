@@ -3,6 +3,7 @@ const cocktailsRouter = express.Router();
 const Cocktail = require('../models/cocktail');
 const Person = require('../models/person');
 const Ingredient = require('../models/ingredient');
+const { populate } = require('../models/cocktail');
 
 
 // ================================
@@ -12,7 +13,7 @@ const Ingredient = require('../models/ingredient');
 // Index
 cocktailsRouter.get('/', async (req, res) => {   
     try {
-        const cocktails = await Cocktail.find({});
+        const cocktails = await Cocktail.find({}).sort({ name: 1 });
         res.render('cocktails/index.ejs', { cocktails, currentUser: req.session.currentUser }); 
     } catch(error) {
         console.log(error);
@@ -160,7 +161,8 @@ cocktailsRouter.get('/:id/edit', async (req, res) => {
 cocktailsRouter.get('/:id/fork', async (req, res) => {
     try {
         const ingredients = await Ingredient.find({});
-        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
+        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient.ingredient');
+ 
         res.render('cocktails/fork.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
     } catch(error) {
         console.log(error);
@@ -171,14 +173,17 @@ cocktailsRouter.get('/:id/fork', async (req, res) => {
 // Show
 cocktailsRouter.get('/:id', async (req, res) => {
     try {
-        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('parent').populate('recipe.ingredient');
+        const ingredients = await Ingredient.find({});
+        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
         const children = await Cocktail.find({ parent: req.params.id }).populate('children');
-        res.render('cocktails/show.ejs', { cocktail, children, currentUser: req.session.currentUser });
+        res.render('cocktails/show.ejs', { cocktail, children, ingredients, currentUser: req.session.currentUser });
+        
     } catch (error) {
         console.log(error);
         res.redirect('/cocktails'); 
     }
 });
+
 
 // ===============================================
 //                 MODULE EXPORT

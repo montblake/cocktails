@@ -418,6 +418,10 @@ main > form > textarea {
   h1, h2 {
     font-size: 6rem;
   }
+  .index li {
+    width: 50%;
+    font-size: 1.4rem;
+  }
 }
 
 
@@ -440,7 +444,8 @@ main > form > textarea {
   
   .index li {
     width: 50%;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin-bottom: .25rem;
   }
 
   #sessions-nav {
@@ -466,6 +471,12 @@ main > form > textarea {
 
   .index {
      padding: 1rem 2rem;
+  }
+
+  .index li {
+    width: 100%;
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
   }
 
   .btn {

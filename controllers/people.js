@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt');
 // Index
 peopleRouter.get('/', async (req, res) => {
     try {
-        const people = await Person.find({});
+        const people = await Person.find({}).sort({ name: 1 });
         res.render('people/index.ejs', { people, currentUser: req.session.currentUser });
     } catch(error) {
         console.log(error);
