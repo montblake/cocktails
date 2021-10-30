@@ -30,8 +30,12 @@
             <!-- DETAILED RECIPE/INGREDIENT SECTION -->
             <h4>Ingredients</h4>
             <ul id="show-ingredients">
-                <% for (let i = 0; i < cocktail.recipe.length; i++) { %>
+                <!-- <% for (let i = 0; i < cocktail.recipe.length; i++) { %>
                     <li><%= cocktail.recipe[i].number + cocktail.recipe[i].fraction + " " + cocktail.recipe[i].unit + " " + cocktail.recipe[i].ingredient.name %> </li>
+                <% } %> -->
+
+                { %>
+                    <li><%= cocktail.recipe[i].number + cocktail.recipe[i].fraction + " " + cocktail.recipe[i].unit + " " + cocktail.recipe[i].ingredient %> </li>
                 <% } %>
             </ul>
           

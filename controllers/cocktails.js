@@ -161,8 +161,7 @@ cocktailsRouter.get('/:id/edit', async (req, res) => {
 cocktailsRouter.get('/:id/fork', async (req, res) => {
     try {
         const ingredients = await Ingredient.find({});
-        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient.ingredient');
- 
+        const cocktail = await Cocktail.findById(req.params.id).populate('createdBy').populate('recipe.ingredient');
         res.render('cocktails/fork.ejs', { cocktail, ingredients, currentUser: req.session.currentUser });
     } catch(error) {
         console.log(error);
