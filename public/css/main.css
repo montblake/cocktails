@@ -175,8 +175,6 @@ p {
 
 /* ICON STYLING */
 #iconography {
-  width: 600px;
-  height: 600px;
   background: black;
   display: flex;
   flex-wrap: wrap;
@@ -187,8 +185,8 @@ p {
 
 .drink-container {
   /* margin: 1rem; */
-  width: 280px;
-  height: 280px;
+  width: 150px;
+  height: 150px;
   background: rgba(225,225,225,1);
   display: flex;
   justify-content: center;
@@ -203,8 +201,9 @@ p {
 }
 
 #drink-container1 {
-  background:black;
+  background:whitesmoke;
   margin: 10px 5px 5px 10px;
+  border: 1px solid whitesmoke;
   
 }
 
