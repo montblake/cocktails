@@ -7,12 +7,28 @@
     <link rel="stylesheet" href="/css/normalize.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4c2c9eabc9.js" crossorigin="anonymous"></script>
     <title>Forking Cocktails</title>
 </head>
 <body>
     <header>
         <%- include('./partials/header.ejs') %>
     </header>
+    <div id="iconography">
+        <div id="drink-container1" class="drink-container">
+            <i id="drink1" class="fas fa-glass-martini-alt drink-icon"></i>
+        </div>
+        
+        <div id="drink-container2" class="drink-container">
+            <i id="drink2" class="fas fa-glass-martini-alt drink-icon"></i>
+        </div>
+        <div id="drink-container3" class="drink-container">
+            <i id="drink3" class="fas fa-glass-martini-alt drink-icon"></i>
+        </div>
+        <div id="drink-container4" class="drink-container">
+            <i id="drink4" class="fas fa-glass-martini-alt drink-icon"></i>
+        </div>
+    </div>
     <main>
       <p class="landing">Welcome to the tasty and intoxicating world of cocktails. Explore our database by <a class="cocktails" href="/cocktails">recipe</a>, by <a class="ingredients" href="/ingredients">ingredient</a>, or by <a class="people" href="/people">contributor</a>. Forking Cocktails isn't just for looking up a recipe. A <a class="users" href="/people/new">registered user</a> can add ingredients and cocktails for others to enjoy. Once <a class="users" href="/sessions/new">logged in</a>, you can also edit or delete your previous entries.</p>
       
